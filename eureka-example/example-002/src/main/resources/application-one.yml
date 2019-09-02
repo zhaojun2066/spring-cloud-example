@@ -5,8 +5,8 @@ server:
   port: 7000
 eureka:
   instance:
-    perferIpAddress: true
-    #hostname:  ${spring.cloud.client.ipAddress}
+    perferIpAddress: truen # 注册ip
+    #hostname:  ${spring.cloud.client.ipAddress} # 连接也是ip
   client:
     service-url:
       defaultZone: http://localhost:7001/eureka/, http://localhost:7002/eureka/
