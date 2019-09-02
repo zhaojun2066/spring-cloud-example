@@ -18,15 +18,23 @@
     java -jar example-002-1.0.0-SNAPSHOT.jar --spring.profiles.active=one
     java -jar example-002-1.0.0-SNAPSHOT.jar --spring.profiles.active=two
     java -jar example-002-1.0.0-SNAPSHOT.jar --spring.profiles.active=three
-
 ### example-003 
     服务注册
     只要引入了spring-cloud-starter-netflix-eureka-client，启动就会自动进行client相关配置了
     如果想禁用服务注册与发现 设置 eureka.client.enabled=false
     采用example-001 注册中心注册服务，所以需要启动example-002 集群三个实例
-### example-004  
+### example-004 
+    服务注册
+    只要引入了spring-cloud-starter-netflix-eureka-client，启动就会自动进行client相关配置了
+    如果想禁用服务注册与发现 设置 eureka.client.enabled=false
+    采用example-001 注册中心注册服务，所以需要启动example-002 集群三个实例
+### example-005  
     服务发现
     LoadBalancerClient 进行负载，spring boot 会自动配置
     RestTemplate  进行调用
-    先启动 example-003 
-        
+    先启动 example-003  example-004 
+### example-006 
+    服务发现
+    RestTemplate 和 @LoadBalanced【默认轮询，url会Ribbon 的拦截器拦截，替换成ip】 进行调用
+    先启动 example-003  example-004 
+                

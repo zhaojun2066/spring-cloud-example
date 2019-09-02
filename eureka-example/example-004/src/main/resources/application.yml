@@ -1,9 +1,17 @@
 spring:
   application:
-    name: eureka-consumer
+    name: eureka-producer
 server:
-  port: 9001
+  port: 9010
 eureka:
+  instance:
+    perferIpAddress: true
+    hostname:  ${spring.cloud.client.ip-address}
   client:
     service-url:
       defaultZone: http://localhost:8000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health

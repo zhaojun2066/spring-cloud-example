@@ -2,10 +2,7 @@ package com.jufeng.cloud.eureka004;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * @program: spring-cloud-example
@@ -15,15 +12,8 @@ import org.springframework.web.client.RestTemplate;
  **/
 @SpringBootApplication
 @EnableDiscoveryClient
-public class EurekaConsumerApplication {
-
-
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder templateBuilder){
-        return templateBuilder.build();
-    }
-
+public class EurekaProducerApplication {
     public static void main(String[] args) {
-        SpringApplication.run(EurekaConsumerApplication.class, args);
+        SpringApplication.run(EurekaProducerApplication.class, args);
     }
 }
