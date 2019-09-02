@@ -22,12 +22,12 @@
     服务注册
     只要引入了spring-cloud-starter-netflix-eureka-client，启动就会自动进行client相关配置了
     如果想禁用服务注册与发现 设置 eureka.client.enabled=false
-    采用example-001 注册中心注册服务，所以需要启动example-002 集群三个实例
+    采用example-001 注册中心注册服务 
 ### example-004 
     服务注册
     只要引入了spring-cloud-starter-netflix-eureka-client，启动就会自动进行client相关配置了
     如果想禁用服务注册与发现 设置 eureka.client.enabled=false
-    采用example-001 注册中心注册服务，所以需要启动example-002 集群三个实例
+    采用example-001 注册中心注册服务 
 ### example-005  
     服务发现
     LoadBalancerClient 进行负载，spring boot 会自动配置
