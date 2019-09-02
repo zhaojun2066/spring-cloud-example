@@ -2,6 +2,7 @@
 
 ## eureka-example  
 ### example-001 
+    @EnableEurekaServer 开启自动化配合 EurekaServer 
     eureka 单机版，会存在单点问题
     配置说明
     server.port，注册中心服务启动的端口
