@@ -37,4 +37,8 @@
     服务发现
     RestTemplate 和 @LoadBalanced【默认轮询，url会Ribbon 的拦截器拦截，替换成ip】 进行调用
     先启动 example-003  example-004 
-                
+### example-007
+    spring-cloud-starter-openfeign
+    使用 @FeignClient 注解来指定这个接口所要调用的服务名称，接口中定义的各个函数使用 Spring MVC 的注解就可以来绑定服务提供方的 REST 接口
+    启动 example-001 注册中心注册服务 
+    启动 example-003  example-004                 
