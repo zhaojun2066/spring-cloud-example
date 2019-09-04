@@ -114,3 +114,13 @@
       启动 openfeign-example-004
       访问：
       http://localhost:8004/user/getName           
+###  openfeign-example-005
+    开启压缩
+    feign:
+      compression:
+        request:
+          enabled: true
+          response: true
+          mime-types: text/xml,application/xml,application/json
+          min-request-size: 2048      
+          

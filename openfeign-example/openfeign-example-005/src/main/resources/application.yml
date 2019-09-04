@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: eureka-consumer007
+server:
+  port: 8005
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+    response:
+      enabled: true
