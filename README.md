@@ -179,6 +179,7 @@
     
     
 ###  openfeign-example-009    
+     代码设置超时时间
      启动 eureka-example/example-001 注册中心注册服务 
      启动 eureka-example/example-003
      启动 openfeign-example-009
