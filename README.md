@@ -129,8 +129,8 @@
     openfeign 是基于ribbon 设置超时
     全局：
     ribbon:
-      connect-timeout: 2000
-      read-timeout: 3000 
+      connectTimeout: 2000
+      readTimeout: 3000 
     局部针对某个服务：
     eureka-producer:
       ribbon:
