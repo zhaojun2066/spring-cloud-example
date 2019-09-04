@@ -1,6 +1,5 @@
-package com.jufeng.cloud.openfeign008;
+package com.jufeng.cloud.openfeign009;
 
-import feign.Logger;
 import feign.Request;
 import org.springframework.context.annotation.Bean;
 
@@ -13,9 +12,8 @@ import org.springframework.context.annotation.Bean;
 
 public class UserServerFeignConfig {
     @Bean
-    public Logger.Level level(){
-        // 设置Feign的日志级别为FULL
-        return Logger.Level.FULL;
+    public Request.Options feignRequestOptions() {
+        return new Request.Options(8000, 3000);
     }
 
 

@@ -176,3 +176,11 @@
     启动 openfeign-example-008
     访问：
     http://localhost:8008/user/getName,看后台日志         
+    
+    
+###  openfeign-example-009    
+     启动 eureka-example/example-001 注册中心注册服务 
+     启动 eureka-example/example-003
+     启动 openfeign-example-009
+     访问：
+     http://localhost:8009/say/33,看后台报time out     

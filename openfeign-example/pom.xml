@@ -20,6 +20,7 @@
         <module>openfeign-example-006</module>
         <module>openfeign-example-007</module>
         <module>openfeign-example-008</module>
+        <module>openfeign-example-009</module>
     </modules>
     <dependencies>
         <dependency>
