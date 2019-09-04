@@ -192,4 +192,12 @@
      启动 eureka-example/example-003 eureka-example/example-004
      启动 openfeign-example-010
      访问：
-     http://localhost:8010/user/getName,看后台日志    
+     http://localhost:8010/user/getName,看server后台日志    
+###  openfeign-example-011
+     多个实例，方便测试，只请求一个url，url 可以设置为单独的直连ip地址
+     详见配置文件     
+     启动 eureka-example/example-001 注册中心注册服务 
+     启动 eureka-example/example-003 eureka-example/example-004
+     启动 openfeign-example-011
+     访问：
+     http://localhost:8011/user/getName,看eureka-example/example-003 日志       
