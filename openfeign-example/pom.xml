@@ -21,6 +21,7 @@
         <module>openfeign-example-007</module>
         <module>openfeign-example-008</module>
         <module>openfeign-example-009</module>
+        <module>openfeign-example-010</module>
     </modules>
     <dependencies>
         <dependency>

@@ -1,4 +1,4 @@
-package com.jufeng.cloud.openfeign009;
+package com.jufeng.cloud.openfeign010;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,7 +11,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
  * @create: 2019-08-29 18:45
  **/
 
-@EnableFeignClients(defaultConfiguration = GlobalFeignLoggerConfig.class)
+@EnableFeignClients
 @SpringBootApplication
 public class EurekaConsumerApplication {
 

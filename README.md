@@ -185,3 +185,11 @@
      启动 openfeign-example-009
      访问：
      http://localhost:8009/say/33,看后台报time out     
+###  openfeign-example-010
+    负载均衡策略设置，基于ribbon
+     详见配置文件     
+     启动 eureka-example/example-001 注册中心注册服务 
+     启动 eureka-example/example-003 eureka-example/example-004
+     启动 openfeign-example-010
+     访问：
+     http://localhost:8010/user/getName,看后台报time out      

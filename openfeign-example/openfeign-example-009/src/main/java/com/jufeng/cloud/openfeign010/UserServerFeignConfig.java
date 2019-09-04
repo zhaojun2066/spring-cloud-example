@@ -1,4 +1,4 @@
-package com.jufeng.cloud.openfeign009;
+package com.jufeng.cloud.openfeign010;
 
 import feign.Request;
 import org.springframework.context.annotation.Bean;

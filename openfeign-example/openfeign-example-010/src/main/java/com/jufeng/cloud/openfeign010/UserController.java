@@ -1,4 +1,4 @@
-package com.jufeng.cloud.openfeign009;
+package com.jufeng.cloud.openfeign010;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +24,6 @@ public class UserController {
         return userService.getName();
     }
 
-    @GetMapping("/say/{what}")
-    public String say(@PathVariable("what") String what){
-        return userService.say(what);
-    }
 
     @GetMapping("/hello")
     public String hello(@RequestParam("what") String what){

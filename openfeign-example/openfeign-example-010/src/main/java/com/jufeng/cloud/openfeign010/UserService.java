@@ -1,4 +1,4 @@
-package com.jufeng.cloud.openfeign009;
+package com.jufeng.cloud.openfeign010;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,14 +12,12 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @create: 2019-09-04 09:40
  **/
 
-@FeignClient(value = "eureka-producer",configuration = UserServerFeignConfig.class)
+@FeignClient(value = "eureka-producer")
 public interface UserService {
 
     @GetMapping("/user/getName")
     String getName();
 
-    @GetMapping("/say/{what}")
-    String say(@PathVariable("what") String what);
 
     @GetMapping("/hello")
     String hello(@RequestParam("what") String what);
