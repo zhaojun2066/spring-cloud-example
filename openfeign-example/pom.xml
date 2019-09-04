@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>openfeign-example-001</module>
+        <module>openfeign-example-002</module>
     </modules>
     <dependencies>
         <dependency>

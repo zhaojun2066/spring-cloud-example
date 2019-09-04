@@ -40,12 +40,43 @@
 
  
 ## openfeign-example 
-    spring-cloud-starter-openfeign
+    spring-cloud-starter-openfeign,通过集成Ribbon或Eureka实现负载均衡的HTTP客户端
+    在Spring Cloud OpenFeign中，除了OpenFeign自身提供的标注（annotation）之外，
+    还可以使用JAX-RS标注，或者Spring MVC标注。
+    两个重要的注解：EnableFeignClients，FeignClient
+    开启  @EnableFeignClients   ,EnableFeignClients标注用于修饰Spring Boot应用的入口类，
+    以通知Spring Boot启动应用时，扫描应用中声明的Feign客户端可访问的Web服务。
+    @FeignClient 标注用于声明Feign客户端可访问的Web服务
+    FeignClient 参数说明
+            name, value (默认"")，两者等价，服务名称
+            qualifier (默认"")
+            url (默认"")，可以指定某一个实例
+            decode404 (默认false)
+            configuration (默认FeignClientsConfiguration.class)，可以配置 HttpMessageConverters，Logger等
+            fallback (默认void.class) ，fallback设置
+            fallbackFactory (默认void.class)
+            path (默认"")，接口前缀
+            primary (默认true)
+    
 ###  openfeign-example-001
      简单事例
-     开启  @EnableFeignClients   
-     定义service： @FeignClient(value = "eureka-producer")
+     开启  @EnableFeignClients 
+     定义UserService： @FeignClient(value = "eureka-producer")  
      启动 eureka-example/example-001 注册中心注册服务 
-     启动 eureka-example/example-003  eureka-example/example-004 
+     启动 eureka-example/example-003
      启动 openfeign-example-001
-     访问：http://localhost:9003/user/getName        
+     访问：http://localhost:8001/user/getName        
+###  openfeign-example-002  
+     path (默认"")，接口前缀demo
+     @FeignClient(
+             value = "eureka-producer",
+             path = "user"
+     )
+    UserService 内的方法Mapping不用加user 签名，直接写getName
+    @GetMapping("getName")
+    String getName();
+    
+     启动 eureka-example/example-001 注册中心注册服务 
+     启动 eureka-example/example-003
+     启动 openfeign-example-002
+     访问：http://localhost:8002/getName     
