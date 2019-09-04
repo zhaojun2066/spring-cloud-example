@@ -47,7 +47,8 @@
      进行配置，FeignClientsConfiguration中包括一个编码器，一个解码器，还有hystrix的一些配置。配置此项可以使用自定义的feignclient配置来
      代替默认配置。并且优先级高于默认配置。但一把情况下使用默认即可
     使用 @FeignClient 注解来指定这个接口所要调用的服务名称，接口中定义的各个函数使用 Spring MVC 的注解就可以来绑定服务提供方的 REST 接口
-    如：@FeignClient(name="producer-test",url="http://localhost:8051") ，通过url 可以指定具体某个实例服务，不写就会进行轮询
+    如：@FeignClient(value = "eureka-producer",fallback = UserCallBack.class,url="http://localhost:8051")
+        通过url 可以指定具体某个实例服务，不写就会进行轮询
     启动 example-001 注册中心注册服务 
     启动 example-003  example-004 
     启动 example-007
