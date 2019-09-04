@@ -120,7 +120,25 @@
       compression:
         request:
           enabled: true
-          response: true
           mime-types: text/xml,application/xml,application/json
-          min-request-size: 2048      
-          
+          min-request-size: 2048
+        response:
+          enabled: true    
+###  openfeign-example-005
+    超时设置
+    openfeign 是基于ribbon 设置超时
+    全局：
+    ribbon:
+      connect-timeout: 2000
+      read-timeout: 3000 
+    局部针对某个服务：
+    eureka-producer:
+      ribbon:
+        ConnectTimeout: 2000 #请求连接超时时间
+        ReadTimeout: 3000 #请求处理的超时时间
+      
+      启动 eureka-example/example-001 注册中心注册服务 
+      启动 eureka-example/example-003
+      启动 openfeign-example-006
+      访问：
+      http://localhost:8004/say/33,看后台报time out                  

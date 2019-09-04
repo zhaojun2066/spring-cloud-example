@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: eureka-consumer007
+server:
+  port: 8006
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+
+ribbon:
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  OkToRetryOnAllOperations: false
+  connectTimeout: 2000
+  readTimeout: 3000
+eureka-producer:
+  ribbon:
+    ConnectTimeout: 2000 #请求连接超时时间
+    ReadTimeout: 3000 #请求处理的超时时间
