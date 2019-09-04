@@ -98,7 +98,7 @@
       http://localhost:8003/say/jufeng         
 ###  openfeign-example-004
     替换JDK默认的URLConnection为okhttp
-    修改openfeign 客户端的实现 ，使用OkHttp
+    修改openfeign 客户端的实现 ，使用OkHttp，同时设置连接数的大小
     加入：
     <dependency>
        <groupId>io.github.openfeign</groupId>

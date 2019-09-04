@@ -13,3 +13,7 @@ feign:
     enable: false
   okhttp:
     enabled: true
+    # 最大连接数
+    max-connections: 200
+    # 单个路径的最大连接数
+    max-connections-per-route: 50
