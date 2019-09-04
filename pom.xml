@@ -10,6 +10,7 @@
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>eureka-example</module>
+        <module>openfeign-example</module>
     </modules>
 
     <parent>
