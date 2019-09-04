@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: eureka-consumer007
+server:
+  port: 8003
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+feign:
+  hystrix:
+    enabled: true  #打开callback
+ribbon:
+  MaxAutoRetries: 0
+  MaxAutoRetriesNextServer: 0
+  OkToRetryOnAllOperations: false
+  connect-timeout: 2000
+  read-timeout: 3000

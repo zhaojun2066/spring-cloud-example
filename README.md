@@ -80,3 +80,15 @@
      启动 eureka-example/example-003
      启动 openfeign-example-002
      访问：http://localhost:8002/getName     
+###  openfeign-example-003       
+    fallback demo
+    开启：feign:
+              hystrix:
+                 enabled: true  #打开callback
+                 
+     @FeignClient(value = "eureka-producer",fallback = UserCallBack.class)
+     public interface UserService    
+     UserCallBack 为callback 实现，这里服务端会sleep 一段时间，让客户端超时，然后走callback
+     通过ribbon 设置 client 的超时
+     访问：
+     http://localhost:8003/say/jufeng         
