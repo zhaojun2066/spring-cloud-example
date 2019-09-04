@@ -39,9 +39,8 @@
     先启动 example-003  example-004 
 
  
+[spring-cloud-starter-openfeign spring-cloud官网介绍](https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#spring-cloud-feign "介绍").  
 ## openfeign-example 
-
-    介绍： [spring-cloud-starter-openfeign spring-cloud官网介绍](https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#spring-cloud-feign "介绍"). 
     spring-cloud-starter-openfeign,通过集成Ribbon实现负载均衡的HTTP客户端
     在Spring Cloud OpenFeign中，除了OpenFeign自身提供的标注（annotation）之外，
     还可以使用JAX-RS标注，或者Spring MVC标注。
