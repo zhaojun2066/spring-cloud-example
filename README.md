@@ -124,7 +124,7 @@
           min-request-size: 2048
         response:
           enabled: true    
-###  openfeign-example-005
+###  openfeign-example-006
     超时设置
     openfeign 是基于ribbon 设置超时
     全局：
@@ -142,3 +142,7 @@
       启动 openfeign-example-006
       访问：
       http://localhost:8004/say/33,看后台报time out                  
+
+###  openfeign-example-007 
+    配置文件修改日志级别
+     loggerLevel: BASIC ，FULL，HEADERS，NONE     

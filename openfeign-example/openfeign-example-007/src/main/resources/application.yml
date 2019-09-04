@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: eureka-consumer007
+server:
+  port: 8007
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+# 配置日志
+logging:
+  level:
+    com.cloud.openfeign007 : debug # 将自定义的这个feign包的日志级别改成debug级别
+feign:
+  client:
+    config:
+      default:   # key 为default时表示的是全局配置
+        loggerLevel: BASIC  #BASIC，FULL，HEADERS，NONE
+      eureka-producer: # 为具体的服务提供者的spring.application.name的值，表示单独为这个工程配置
+        loggerLevel: FULL
