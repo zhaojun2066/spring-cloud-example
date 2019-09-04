@@ -40,7 +40,7 @@
 
  
 ## openfeign-example 
-    spring-cloud-starter-openfeign,通过集成Ribbon或Eureka实现负载均衡的HTTP客户端
+    spring-cloud-starter-openfeign,通过集成Ribbon实现负载均衡的HTTP客户端
     在Spring Cloud OpenFeign中，除了OpenFeign自身提供的标注（annotation）之外，
     还可以使用JAX-RS标注，或者Spring MVC标注。
     两个重要的注解：EnableFeignClients，FeignClient
@@ -145,4 +145,13 @@
 
 ###  openfeign-example-007 
     配置文件修改日志级别
-     loggerLevel: BASIC ，FULL，HEADERS，NONE     
+    loggerLevel: BASIC ，FULL，HEADERS，NONE  
+    NONE:默认值 ，什么都不打印
+    BASIC：仅记录请求方法、URL、响应状态码以及执行时间   
+    HEADERS：在BASIC基础上，记录请求和响应的header
+    FULL：记录请求和响应的header、body 、元数据
+    启动 eureka-example/example-001 注册中心注册服务 
+    启动 eureka-example/example-003
+    启动 openfeign-example-007
+    访问：
+    http://localhost:8007/user/getName,看后台日志     

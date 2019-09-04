@@ -10,7 +10,7 @@ eureka:
 # 配置日志
 logging:
   level:
-    com.cloud.openfeign007 : debug # 将自定义的这个feign包的日志级别改成debug级别
+    com.jufeng.cloud.openfeign007 : debug # 将自定义的这个feign包的日志级别改成debug级别
 feign:
   client:
     config:
