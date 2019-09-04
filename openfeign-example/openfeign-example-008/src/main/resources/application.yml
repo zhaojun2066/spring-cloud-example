@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: eureka-consumer008
+server:
+  port: 8008
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+# 配置日志
+logging:
+  level:
+    # 这里需要配置为debug，否则feign的日志级别配置不会生效
+    com.jufeng.cloud.openfeign008 : debug # 将自定义的这个feign包的日志级别改成debug级别

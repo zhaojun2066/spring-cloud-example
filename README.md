@@ -155,3 +155,24 @@
     启动 openfeign-example-007
     访问：
     http://localhost:8007/user/getName,看后台日志     
+###  openfeign-example-008
+    代码修改日志级别
+    loggerLevel: BASIC ，FULL，HEADERS，NONE  
+    NONE:默认值 ，什么都不打印
+    BASIC：仅记录请求方法、URL、响应状态码以及执行时间   
+    HEADERS：在BASIC基础上，记录请求和响应的header
+    FULL：记录请求和响应的header、body 、元数据
+    关于优先级：细粒度配置文件配置 > 细粒度代码配置 > 全局配置文件配置 > 全局代码配置
+    demo:
+    局部设置：UserServerFeignConfig
+    @FeignClient(value = "eureka-producer",configuration = UserServerFeignConfig.class)
+    public interface UserService 
+    
+    全局设置：
+    @EnableFeignClients(defaultConfiguration = GlobalFeignLoggerConfig.class)
+    
+    启动 eureka-example/example-001 注册中心注册服务 
+    启动 eureka-example/example-003
+    启动 openfeign-example-008
+    访问：
+    http://localhost:8008/user/getName,看后台日志         
