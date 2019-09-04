@@ -90,5 +90,27 @@
      public interface UserService    
      UserCallBack 为callback 实现，这里服务端会sleep 一段时间，让客户端超时，然后走callback
      通过ribbon 设置 client 的超时
-     访问：
-     http://localhost:8003/say/jufeng         
+     
+      启动 eureka-example/example-001 注册中心注册服务 
+      启动 eureka-example/example-003
+      启动 openfeign-example-003
+      访问：
+      http://localhost:8003/say/jufeng         
+###  openfeign-example-004
+    替换JDK默认的URLConnection为okhttp
+    修改openfeign 客户端的实现 ，使用OkHttp
+    加入：
+    <dependency>
+       <groupId>io.github.openfeign</groupId>
+       <artifactId>feign-okhttp</artifactId>
+    </dependency>
+    开启：
+    feign:
+      okhttp:
+        enabled: true  
+    必要时可以自己可以定时OkHttpClient,不定制也可以使用默认的 ,本例采用定制化
+      启动 eureka-example/example-001 注册中心注册服务 
+      启动 eureka-example/example-003
+      启动 openfeign-example-004
+      访问：
+      http://localhost:8004/user/getName           
