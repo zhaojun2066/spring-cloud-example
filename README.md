@@ -192,4 +192,4 @@
      启动 eureka-example/example-003 eureka-example/example-004
      启动 openfeign-example-010
      访问：
-     http://localhost:8010/user/getName,看后台报time out      
+     http://localhost:8010/user/getName,看后台日志    
