@@ -2,6 +2,8 @@ package com.jufeng.cloud.eureka007;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -21,5 +23,15 @@ public class UserController {
     @GetMapping("/user/getName")
     public String getName(){
         return userService.getName();
+    }
+
+    @GetMapping("/say/{what}")
+    public String say(@PathVariable("what") String what){
+        return userService.say(what);
+    }
+
+    @GetMapping("/hello")
+    public String hello(@RequestParam("what") String what){
+        return userService.hello(what);
     }
 }
