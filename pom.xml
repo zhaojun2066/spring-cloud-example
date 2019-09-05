@@ -13,6 +13,7 @@
         <module>openfeign-example</module>
         <module>bootstrap-context-example</module>
         <module>restTemplate-example</module>
+        <module>config-example</module>
     </modules>
 
     <parent>

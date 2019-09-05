@@ -27,6 +27,7 @@
       注意：MyBootstrapAutoConfiguration是我们自定义的引导类，该类一定不能被@SpringBootApplication注解ComponentScan到,
             否则引导必然就会被主程序所覆盖。因此我用包把他们区分开来
                
+
 ## eureka-example  
 ### example-001 
     @EnableEurekaServer 开启自动化配合 EurekaServer 
@@ -242,3 +243,9 @@
      启动 openfeign-example-011
      访问：
      http://localhost:8011/user/getName,看eureka-example/example-003 日志       
+     
+## config-example
+    配置中心
+
+### config-example-001
+     启动配置中心server         
