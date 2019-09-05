@@ -23,9 +23,10 @@
          用bootstrap属性文件代替application，毕竟Envrionment是共享的。   
        
 ### bootstrap-context-example-001
-      自定义  bootstrap context 
+      自定义  bootstrap context ,bootstrap context 加载的配置不会被application context覆盖，看输出内容是什么
       注意：MyBootstrapAutoConfiguration是我们自定义的引导类，该类一定不能被@SpringBootApplication注解ComponentScan到,
-            否则引导必然就会被主程序所覆盖。因此我用包把他们区分开来   
+            否则引导必然就会被主程序所覆盖。因此我用包把他们区分开来
+               
 ## eureka-example  
 ### example-001 
     @EnableEurekaServer 开启自动化配合 EurekaServer 
