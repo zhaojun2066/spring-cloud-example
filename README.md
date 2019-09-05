@@ -1,5 +1,31 @@
-
-
+## bootstrap-context-example
+       bootstrap context
+       官方解释：
+       一个Spring Cloud应用程序通过创建一个“引导”上下文来进行操作，这个上下文是主应用程序的父上下文。开箱即用，负责从外部源加载配置属性，还解密本地外部配置文件中的属性。
+       这两个上下文共享一个Environment，这是任何Spring应用程序的外部属性的来源。Bootstrap属性的优先级高，因此默认情况下不能被本地配置覆盖。
+       引导上下文使用与主应用程序上下文不同的外部配置约定，因此使用bootstrap.yml application.yml（或.properties）代替引导和主上下文的外部配置。例：bootstrap.yml
+       spring:
+         application:
+           name: foo
+         cloud:
+           config:
+             uri:sss
+       如果您的应用程序需要服务器上的特定于应用程序的配置，那么设置spring.application.name（在bootstrap.yml或application.yml）中是个好主意。
+       您可以通过设置spring.cloud.bootstrap.enabled=false（例如在系统属性中）来完全禁用引导过程。
+       
+       总结：
+       1>bootstrap context 创建时会读取bootstrap.properties|yml 在内容作为引导配置, 因此bootstrap优先于application加载。
+       2>boostrap的属性文件在以下情景下会使用： 
+     　　　　 配置中心：config-server里请用bootstrap属性文件 
+     　　　   解密属性文件时，最好使用bootstrap属性文件 
+     　　　　 需要自定义引导程序时使用bootstrap属性文件，主要一定不要被我们主程序扫描到
+       3>application会覆盖bootstrap中的非引导配置，因此不建议两种类型配置文件同时存在。简单粗暴的做法是在springcloud应用中
+         用bootstrap属性文件代替application，毕竟Envrionment是共享的。   
+       
+### bootstrap-context-example-001
+      自定义  bootstrap context 
+      注意：MyBootstrapAutoConfiguration是我们自定义的引导类，该类一定不能被@SpringBootApplication注解ComponentScan到,
+            否则引导必然就会被主程序所覆盖。因此我用包把他们区分开来   
 ## eureka-example  
 ### example-001 
     @EnableEurekaServer 开启自动化配合 EurekaServer 

@@ -11,6 +11,7 @@
     <modules>
         <module>eureka-example</module>
         <module>openfeign-example</module>
+        <module>bootstrap-context-example</module>
     </modules>
 
     <parent>
