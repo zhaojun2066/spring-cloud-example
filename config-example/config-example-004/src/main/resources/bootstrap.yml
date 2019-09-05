@@ -1,6 +1,6 @@
 spring:
   application:
-    name: config  # 抓取配置中心的application
+    name: config-example-003  # 抓取配置中心的application
   cloud:
     config:
       uri: http://localhost:1003 # 对应config-server地址，默认值http://localhost:1003
