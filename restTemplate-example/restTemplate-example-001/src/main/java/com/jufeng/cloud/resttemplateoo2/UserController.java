@@ -1,4 +1,4 @@
-package com.jufeng.cloud.eureka005;
+package com.jufeng.cloud.resttemplateoo2;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;

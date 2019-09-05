@@ -65,8 +65,21 @@
     RestTemplate 和 @LoadBalanced【默认轮询，url会Ribbon 的拦截器拦截，替换成ip】 进行调用
     先启动 example-003  example-004 
 
- 
+## restTemplate-example
+    restTemplate 是一个http client 
+    ribbon是一个很好的负载均衡客户端，可以很好的控制http和tcp的行为
+    restTemplate+ ribbon 可以很好进行负载均衡的操作
+### restTemplate-example-001
+    LoadBalancerClient 进行负载，spring boot 会自动配置
+    RestTemplate  进行调用
+    先启动 eureka-example/example-001  eureka-example/example-003  eureka-example/example-004   
+    
+### restTemplate-example-002
+    RestTemplate 和 @LoadBalanced + Ribbon 进行调用
+    先启动 eureka-example/example-001  eureka-example/example-003  eureka-example/example-004       
+     
 [spring-cloud-starter-openfeign spring-cloud官网介绍](https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#spring-cloud-feign "介绍").  
+
 ## openfeign-example 
     spring-cloud-starter-openfeign,通过集成Ribbon实现负载均衡的HTTP客户端
     在Spring Cloud OpenFeign中，除了OpenFeign自身提供的标注（annotation）之外，
