@@ -1,4 +1,4 @@
-package com.jufeng.cloud.resttemplateoo2;
+package com.jufeng.cloud.resttemplate001;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;

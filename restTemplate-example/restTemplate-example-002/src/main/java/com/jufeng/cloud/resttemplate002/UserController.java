@@ -1,4 +1,4 @@
-package com.jufeng.cloud.resttemplateoo2;
+package com.jufeng.cloud.resttemplate002;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
