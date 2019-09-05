@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: config-server003
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zhaojun2066/spring-cloud-example/config-example/{application}
+          search-paths: config
+          username:
+          password:
+server:
+  port: 1003
