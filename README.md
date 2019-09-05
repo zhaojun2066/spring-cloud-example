@@ -248,4 +248,21 @@
     配置中心
 
 ### config-example-001
-     启动配置中心server         
+     启动配置中心server
+     访问：
+     http://localhost:1000/config/dev
+     如果打印基本信息则表示启动正常。
+     http请求地址：/{application}/{profile}[/{label}]
+     资源文件：
+     /{application}-{profile}.yml
+     /{label}/{application}-{profile}.yml
+     /{application}-{profile}.properties
+     /{label}/{application}-{profile}.properties
+     示例：本例中资源文件是config-dev.yml，其中config就是application，dev就是profile，
+     匹配资源文件的第三种，访问地址就是/config(application)/dev(profile)
+     label 是 git 的分支
+### config-example-002
+    配置中心客户端
+    详见: bootstrap.yml
+    先启动 config-example-001
+    访问 ：http://localhost:1002/say           

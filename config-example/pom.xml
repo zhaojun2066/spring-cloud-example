@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>config-example-001</module>
+        <module>config-example-002</module>
     </modules>
 
 

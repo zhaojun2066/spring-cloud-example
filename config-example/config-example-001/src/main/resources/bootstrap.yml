@@ -5,8 +5,8 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/zhaojun2066/spring-cloud-example/
-          search-paths: config-example/config-example-001
+          uri: https://github.com/zhaojun2066/spring-cloud-example
+          search-paths: config-example/config-example-001/config
           username:
           password:
 server:
