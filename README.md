@@ -266,3 +266,11 @@
     详见: bootstrap.yml
     先启动 config-example-001
     访问 ：http://localhost:1002/say           
+### config-example-003
+    占位符 {application} 启动配置服务server,这里以仓库 spring-cloud-example 为例作为application的名字
+    访问：http://localhost:1003/spring-cloud-example/dev
+### config-example-004
+     配置中心客户端
+     详见: bootstrap.yml
+     先启动 config-example-003
+     访问 ：http://localhost:1004/say       
