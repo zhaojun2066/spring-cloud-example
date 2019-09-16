@@ -290,4 +290,4 @@
     详见: bootstrap.yml
     先启动 config-auto-refresh/config-server,然后再git 仓库修改config-dev 里的name 的value
     刷新：POST 请求：http://localhost:9090/actuator/bus-refresh
-    访问 ：http://localhost:1005/say ，发现值变了       
+    访问 ：http://localhost:9091/say ，发现值变了       
