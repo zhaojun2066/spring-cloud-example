@@ -1,4 +1,4 @@
-package com.judeng.cloud.config004;
+package com.jufeng.cloud.aoto.config.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -7,12 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @program: spring-cloud-example
  * @description:
  * @author: JuFeng(ZhaoJun)
- * @create: 2019-09-05 17:04
+ * @create: 2019-09-12 16:58
  **/
-
 @SpringBootApplication
-public class App {
+public class ConfigClient {
     public static void main(String[] args) {
-        SpringApplication.run(App.class,args);
+        SpringApplication.run(ConfigClient.class,args);
     }
 }

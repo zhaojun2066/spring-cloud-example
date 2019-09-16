@@ -1,4 +1,4 @@
-package com.judeng.cloud.config004;
+package com.judeng.cloud.config005;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

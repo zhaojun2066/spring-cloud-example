@@ -1,0 +1,27 @@
+
+server:
+  port: 9091
+
+spring:
+  application:
+    name: config           			#对应微服务配置文件名称
+  cloud:
+    config:
+      uri: http://localhost:9090    		        #config server 端地址
+      profile: dev                                      #项目配置文件选择
+      label: master                                     #git仓库的分支
+    stream:
+      kafka:
+        binder:
+          brokers: 10.12.52.21:9092
+          defaultBrokerPort: 9092
+          zkNodes: 10.12.52.21:2181
+          defaultZkPort: 2181
+
+  kafka:
+    bootstrap-servers: 10.12.52.21:9092
+
+
+security:                       #是否开启基本的鉴权，默认为true
+  basic:
+    enabled: false

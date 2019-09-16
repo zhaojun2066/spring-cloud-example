@@ -273,4 +273,21 @@
      配置中心客户端
      详见: bootstrap.yml
      先启动 config-example-003
-     访问 ：http://localhost:1004/say       
+     访问 ：http://localhost:1004/say   
+### config-example-005
+     配置中心客户端 手动刷新
+     详见: bootstrap.yml
+     先启动 config-example-001,然后再git 仓库修改config-dev 里的name 的value
+     刷新：http://localhost:1005/actuator/refresh [post 请求]
+     访问 ：http://localhost:1005/say ，发现值变了        
+ 
+### config-auto-refresh/config-server
+     配置中心开启广播  bus+ kafka
+     详见: bootstrap.yml
+     更新和推送配置编更POST 请求：http://localhost:9090/actuator/bus-refresh  
+### config-auto-refresh/config-clients
+    配置中心客户端 
+    详见: bootstrap.yml
+    先启动 config-auto-refresh/config-server,然后再git 仓库修改config-dev 里的name 的value
+    刷新：POST 请求：http://localhost:9090/actuator/bus-refresh
+    访问 ：http://localhost:1005/say ，发现值变了       

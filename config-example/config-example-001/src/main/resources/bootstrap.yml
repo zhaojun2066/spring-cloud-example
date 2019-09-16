@@ -10,4 +10,4 @@ spring:
           username:
           password:
 server:
-  port: 1000
+  port: 1001

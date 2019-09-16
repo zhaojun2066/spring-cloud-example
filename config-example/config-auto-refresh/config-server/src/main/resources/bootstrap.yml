@@ -1,0 +1,35 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: config-server
+  cloud:                                                  #config服务端，从git拉取数据
+    config:
+      server:
+        git:
+          uri: https://github.com/zhaojun2066/spring-cloud-example
+          search-paths:  config-example/config-example-001/config
+          username:
+          password:
+    stream:
+      kafka:
+        binder:
+          brokers: 10.12.52.21:9092
+          defaultBrokerPort: 9092
+          zkNodes: 10.12.52.21:2181
+          defaultZkPort: 2181
+  kafka:
+    bootstrap-servers: 10.12.52.21:9092
+
+management:                    #SpringCloud 1.5版本暴露接口，暴露/bus-refresh接口
+  security:
+    enabled: false
+  endpoints:                  #SpringCloud 2.0.0版本以后暴露接口方式
+   web:
+     exposure:
+       include: "*"           # 打开所有包括 /actuator/bus-refresh
+
+security:                       #是否开启基本的鉴权，默认为true
+  basic:
+    enabled: false

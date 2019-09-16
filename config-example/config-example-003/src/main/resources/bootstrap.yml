@@ -5,6 +5,7 @@ spring:
     config:
       server:
         git:
+          #clone-on-start: true  # 程序启动的时候，就会去clone git 仓库
           uri: https://github.com/zhaojun2066/{application}
           search-paths: config-example/config-example-003/config
           username:

@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: config  # 抓取配置中心的application    s
+  cloud:
+    config:
+      uri: http://localhost:1001 # 对应config-server地址，默认值http://localhost:1001
+      profile: dev  #对应config-server获取的配置文件的{profile}
+      label: master  # 对应config-server获取的配置文件的{label}，即Git仓库分支
+
+management:
+  endpoints:
+     web:
+       shutdown:
+         enabled: false
+       exposure:
+         include: refresh
+         exclude: env,beans
+     health:
+       show-details: always
