@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: ha-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/zhaojun2066/spring-cloud-example
+          search-paths: config-example/config-example-001/config
+          username:
+          password:
+
+eureka:
+  instance:
+    perferIpAddress: true
+    hostname:  ${spring.cloud.client.ip-address}
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 9095

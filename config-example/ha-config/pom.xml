@@ -3,22 +3,17 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-cloud-example</artifactId>
+        <artifactId>config-example</artifactId>
         <groupId>com.jufeng.cloud</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>config-example</artifactId>
+    <artifactId>ha-config</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>config-example-001</module>
-        <module>config-example-002</module>
-        <module>config-example-003</module>
-        <module>config-example-004</module>
-        <module>config-example-005</module>
-        <module>config-auto-refresh</module>
-        <module>ha-config</module>
+        <module>ha-server</module>
+        <module>ha-client</module>
     </modules>
 
 
