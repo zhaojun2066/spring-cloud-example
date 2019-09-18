@@ -29,6 +29,8 @@
                
 
 ## eureka-example  
+    
+    
 ### example-001 
     @EnableEurekaServer 开启自动化配合 EurekaServer 
     eureka 单机版，会存在单点问题
@@ -37,7 +39,9 @@
     eureka.client.register-with-eureka：是否将自己注册到该server ，应该设置false 不需要自己注册自己
     eureka.client.fetch-registry： 是否从eureka-server 获得注册信息，默认为true
     eureka.client.service-url.defaultZone：默认的eureka-server 地址，多个地址用逗号相隔 
-    
+    enable-self-preservation ：自我保护机制配置
+    eviction-interval-timer-in-ms： 多少时间内没有心跳，开始剔除该client
+     
 ### example-002  
     eureka 集群模式 ,三个实例 application-one.yml , application-two.yml，application-three.yml
     启动：在spring-cloud-example 下 
@@ -56,15 +60,8 @@
     只要引入了spring-cloud-starter-netflix-eureka-client，启动就会自动进行client相关配置了
     如果想禁用服务注册与发现 设置 eureka.client.enabled=false
     采用example-001 注册中心注册服务 
-### example-005  
-    服务发现
-    LoadBalancerClient 进行负载，spring boot 会自动配置
-    RestTemplate  进行调用
-    先启动 example-003  example-004 
-### example-006 
-    服务发现
-    RestTemplate 和 @LoadBalanced【默认轮询，url会Ribbon 的拦截器拦截，替换成ip】 进行调用
-    先启动 example-003  example-004 
+
+
 
 ## restTemplate-example
     restTemplate 是一个http client 

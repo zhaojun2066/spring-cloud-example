@@ -11,3 +11,8 @@ eureka:
     fetch-registry: false
     service-url:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    #测试时关闭自我保护机制，保证不可用服务及时剔除
+    enable-self-preservation: false
+    #间隔2秒剔除
+    eviction-interval-timer-in-ms: 2000
