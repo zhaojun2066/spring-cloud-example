@@ -371,7 +371,7 @@
        
       
 ###  hystrix-example-001 
-    服务提供者，用于测试，首先启动注册中心   eureka-example/example-001    
+    服务提供者，用于测试，首先启动注册中心   eureka-example/example-001    ，下面所有的测试都是基于该服务
 ###  hystrix-example-002 
      command 、thread 参数设置            
 ###  hystrix-example-003
@@ -380,4 +380,6 @@
     那么任意用户再次请求时都会在缓存中取出数据，其实并不是这样，Hystrix缓存仅限于当前线程内如果重复调用
     相同的服务依赖会返回缓存的数据，通俗解释就是Hystrix缓存是基于request的，在当次请求内对同一个依赖服务
     的多次调用，除了第一次是真实调用，其余的会使用Hystrix缓存.
+    
+    启动后访问：http://localhost:7003/say/jufeng，看后台服务只输出一次调用
     
