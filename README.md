@@ -400,5 +400,6 @@
     
     访问：http://localhost:7004/user/getName
              
-     
+###  hystrix-example-004 
+     openfegin 测试 ，详见配置文件    
     
