@@ -409,4 +409,12 @@
     测试未能成功，总是调用单个方法，返回null feture，并没有关联到批量方法 
 ###  hystrix-example-007
     异常处理和忽略异常测试
-    http://localhost:7007/getUsers       
+    http://localhost:7007/getUsers   
+    
+###  hystrix-example-009
+    默认监控：    
+    http://localhost:7008/actuator/hystrix.stream    
+    
+    配置Dashboard
+    详见ConfigBean
+     copy http://localhost:7008/hystrix.stream 到 http://localhost:7008/hystrix 页面中   
