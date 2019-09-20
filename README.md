@@ -63,6 +63,26 @@
     restTemplate 是一个http client 
     ribbon是一个很好的负载均衡客户端，可以很好的控制http和tcp的行为
     restTemplate+ ribbon 可以很好进行负载均衡的操作
+    
+    代码配置ribbon
+    https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_hystrix_timeouts_and_ribbon_clients
+    配置文件ribbon
+    https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_customizing_the_ribbon_client_by_setting_properties
+    
+    How to Use Ribbon Without Eureka：
+    if you prefer not to use Eureka, Ribbon and Feign also work. Suppose you have declared a @RibbonClient for "stores", and 
+    Eureka is not in use (and not even on the classpath). The Ribbon client defaults to a configured server list. You can supply 
+    the configuration as follows:
+    application.yml.
+    stores:
+      ribbon:
+        listOfServers: example.com,google.com
+        
+    Disable Eureka Use in Ribbon:
+    ribbon:
+      eureka:
+       enabled: false
+    
 ### restTemplate-example-001
     LoadBalancerClient 进行负载，spring boot 会自动配置
     RestTemplate  进行调用
