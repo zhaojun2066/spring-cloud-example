@@ -82,6 +82,12 @@
     ribbon:
       eureka:
        enabled: false
+       
+    Ribbon支持配置eager load实现在启动时就初始化Ribbon相关类    
+    ribbon:
+      eager-load:
+        enabled: true
+        clients: client1, client2, client3   
     
 ### restTemplate-example-001
     LoadBalancerClient 进行负载，spring boot 会自动配置
