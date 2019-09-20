@@ -6,6 +6,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 /**
  * @program: spring-cloud-example
  * @description:
@@ -38,5 +43,21 @@ public class UserController {
     @GetMapping("/hello")
     public String hello(@RequestParam("what") String what){
         return "hello: " + what;
+    }
+
+
+    @GetMapping("/getUsers")
+    public List<User> getUsers(@RequestParam("names")  String names){
+        String [] arrays = names.split(",");
+        List<User> list = new ArrayList<>();
+        if (names!=null){
+            list=  Stream.of(arrays).map(x->{
+                User user = new User();
+                user.setName(x);
+                return user;
+            }).collect(Collectors.toList());
+        }
+
+        return list;
     }
 }
