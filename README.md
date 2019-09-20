@@ -407,4 +407,6 @@
 ###  hystrix-example-006
     合并请求，在在一个时间窗口内，合并所有的请求在一个线程池内完成，再返回。
     测试未能成功，总是调用单个方法，返回null feture，并没有关联到批量方法 
-       
+###  hystrix-example-007
+    异常处理和忽略异常测试
+    http://localhost:7007/getUsers       

@@ -30,8 +30,8 @@ public class UserService {
 
 
     @HystrixCommand(
-            fallbackMethod = "err",
-          //  ignoreExceptions =ArithmeticException.class // 忽略该异常，如果忽略该异常，那么该异常会直接返回给client，不会走fallback
+            fallbackMethod = "err"
+          //m   ignoreExceptions =ArithmeticException.class // 忽略该异常，如果忽略该异常，那么该异常会直接返回给client，不会走fallback
     )
     public List<User> getUserByNames(List<String> names){
         int a = 1/0; // 模拟异常
