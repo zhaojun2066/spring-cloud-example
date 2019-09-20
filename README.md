@@ -371,6 +371,11 @@
        
        信号量是不能执行异步的 
        
+       
+       timeout 设置注意：
+       Hystrix Timeouts And Ribbon Clients
+       意思就是hystrix timeout 要大于 ribbon client 的超时时间，才有效，包括要大于ribbon client 重试的总时间
+       https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_hystrix_timeouts_and_ribbon_clients
       
 ###  hystrix-example-001 
     服务提供者，用于测试，首先启动注册中心   eureka-example/example-001    ，下面所有的测试都是基于该服务
