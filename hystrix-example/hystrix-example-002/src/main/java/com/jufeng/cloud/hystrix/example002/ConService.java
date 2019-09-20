@@ -65,7 +65,13 @@ public class ConService {
     }
 
 
+    // 这里用于设置第一个fallback失败后，还可以再进行fallback ，终极fallback
+    @HystrixCommand(fallbackMethod = "getUsernameLastFallBack")
     public String getUsernameFallback(String name){
         return "getUsernameFallback....";
+    }
+
+    public String getUsernameLastFallBack(String name){
+        return "getUsernameLastFallBack....";
     }
 }

@@ -18,6 +18,7 @@
         <module>hystrix-example-004</module>
         <module>hystrix-example-005</module>
         <module>hystrix-example-006</module>
+        <module>hystrix-example-007</module>
     </modules>
 
 

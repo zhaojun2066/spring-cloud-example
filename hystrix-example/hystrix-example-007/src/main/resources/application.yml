@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: hystrix-consumer007
+server:
+  port: 7007
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health

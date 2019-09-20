@@ -291,7 +291,9 @@
          
 ## hystrix-example
     demo：
-        @HystrixCommand(commandProperties = {
+        @HystrixCommand(
+             ignoreExceptions :   忽略的异常
+                  commandProperties = {
                   @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
                   @HystrixProperty(name = "execution.timeout.enabled", value = "false")},
                   threadPoolProperties = {
@@ -373,7 +375,7 @@
 ###  hystrix-example-001 
     服务提供者，用于测试，首先启动注册中心   eureka-example/example-001    ，下面所有的测试都是基于该服务
 ###  hystrix-example-002 
-     command 、thread 参数设置 ,测试超时 fallback           
+     command 、thread 参数设置 ,测试超时 fallback ,还可以为fallback的方法在设置fallback          
 ###  hystrix-example-003
     cache 测试
     这里大家可能有一个误解，可能会把Hystrix的请求缓存当作和Redis缓存一样的概念，就是如果数据存到缓存了，
