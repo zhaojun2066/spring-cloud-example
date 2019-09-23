@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>zuul-example-server</artifactId>
+    <artifactId>zuul-example-004</artifactId>
 
 
 </project>

@@ -13,10 +13,10 @@
     <packaging>pom</packaging>
     <modules>
         <module>zuul-example-001</module>
-        <module>zuul-example-server</module>
         <module>zuul-euraka-server</module>
         <module>zuul-example-002</module>
         <module>zuul-example-003</module>
+        <module>zuul-example-004</module>
     </modules>
 
     <dependencies>

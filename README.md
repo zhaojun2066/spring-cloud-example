@@ -511,4 +511,7 @@
     看后台打印和返回的header
     
     接着停掉zuul-euraka-server，再次访问http://localhost:3003/user/hello?what=100，进入errorfiler
-        
+
+### zuul-example-004
+    代理指定的url
+    http://localhost:3004/user/hello?what=100       

@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: proxy-004
+server:
+  port: 3004
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health
+ribbon:  # Zuul Http Client 默认是 Apache HTTP Client
+  restclient:
+    enabled: true
+zuul:
+  sensitive-headers:
+  ignored-patterns:
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 8000
+  routes:
+    users: # 这里随便起，也可以写成server-id，下面的额serviceId 就可以不写了
+      path: /user/**
+      sensitiveHeaders:    #过滤客户端的header
+      ignoredHeaders:   # 过滤服务端的header，也就是代理层的header
+      stripPrefix: false   # 不跳过user 前缀
+      url: http://localhost:3000
