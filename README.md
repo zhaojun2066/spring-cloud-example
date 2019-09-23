@@ -462,3 +462,9 @@
      设置代理超时时间，配置hystrix 超时时间
      首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
      http://localhost:3001/user/hello?what=100     
+### zuul-example-002  
+    zuul +hystrix demo     
+    代理zuul-euraka-server
+    首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
+    http://localhost:3002/user/hello?what=100    ,可以正常访问，然后停掉zuul-euraka-server，
+    在访问   http://localhost:3002/user/hello?what=100，发现进入fallback

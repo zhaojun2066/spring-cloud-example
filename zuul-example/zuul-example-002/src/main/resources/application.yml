@@ -1,0 +1,45 @@
+spring:
+  application:
+    name: proxy-002
+server:
+  port: 3002
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health
+ribbon:  # Zuul Http Client 默认是 Apache HTTP Client
+  restclient:
+    enabled: true
+zuul:
+  threadPool:
+    useSeparateThreadPools: true
+    threadPoolKeyPrefix: zuulgw
+  routes:
+    users: # 这里随便起，也可以写成server-id，下面的额serviceId 就可以不写了
+      path: /user/**
+      sensitiveHeaders: Cookie,Set-Cookie,Authorization  #过滤客户端的header
+      ignoredHeaders: Authorization  # 过滤服务端的header，也就是代理层的header
+      stripPrefix: false   # 不跳过user 前缀
+      serviceId: user-server
+
+hystrix:
+  command:
+    user-server:  # 服务id
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 8005
+# 设置user-server代理的超时时间
+user-server:
+  ribbon:
+    #NIWSServerListClassName: com.netflix.loadbalancer.ConfigurationBasedServerList
+    #listOfServers: https://example1.com,http://example2.com
+    ConnectTimeout: 1000
+    ReadTimeout: 3000
+    MaxTotalHttpConnections: 500
+    MaxConnectionsPerHost: 100
