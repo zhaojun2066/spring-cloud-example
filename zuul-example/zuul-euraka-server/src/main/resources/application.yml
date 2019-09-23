@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: user-server
+server:
+  port: 3000
+eureka:
+  instance:
+    ##EurekaClient 向注册中心发送心跳的时间间隔，（单位：秒）客户端告诉注册服务端自己会按照该规则发送心跳
+    lease-renewal-interval-in-seconds: 1
+    ##EurekaServer在收到最后一次心跳后等待的时间上限，（单位：秒），超过则剔除。客户端告诉注册服务端自己会按照该规则发送心跳
+    lease-expiration-duration-in-seconds: 2
+    perferIpAddress: true
+    hostname:  ${spring.cloud.client.ip-address}
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #暴露所有端点 默认是info,health

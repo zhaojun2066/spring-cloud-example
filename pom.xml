@@ -15,6 +15,7 @@
         <module>restTemplate-example</module>
         <module>config-example</module>
         <module>hystrix-example</module>
+        <module>zuul-example</module>
     </modules>
 
     <parent>

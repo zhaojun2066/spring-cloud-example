@@ -449,3 +449,16 @@
     配置Dashboard
     详见ConfigBean
      copy http://localhost:7008/hystrix.stream 到 http://localhost:7008/hystrix 页面中   
+ 
+## zuul-example
+    网关
+    https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_router_and_filter_zuul
+### zuul-euraka-server
+     注册到 eureka 的server
+### zuul-example-server
+     普通的server     
+### zuul-example-001     
+     代理zuul-euraka-server，并开始 okhttp client ,并且过滤客户端的cookie,并且过滤服务端代理传递的header
+     设置代理超时时间，配置hystrix 超时时间
+     首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
+     http://localhost:3001/user/hello?what=100     
