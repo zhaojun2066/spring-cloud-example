@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: proxy-005
+server:
+  port: 3005
+zuul:
+  sensitive-headers:
+  ignored-patterns:
+  sensitiveHeaders:
+  ignoredHeaders:
+  stripPrefix: false
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 8000

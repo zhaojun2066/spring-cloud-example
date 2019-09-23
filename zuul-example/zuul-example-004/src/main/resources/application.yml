@@ -8,9 +8,6 @@ management:
     web:
       exposure:
         include: "*" #暴露所有端点 默认是info,health
-ribbon:  # Zuul Http Client 默认是 Apache HTTP Client
-  restclient:
-    enabled: true
 zuul:
   sensitive-headers:
   ignored-patterns:

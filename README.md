@@ -515,3 +515,6 @@
 ### zuul-example-004
     代理指定的url
     http://localhost:3004/user/hello?what=100       
+### zuul-example-005
+    动态url 路由 可以实时更新
+     CustomRouteLocator extends SimpleRouteLocator implements RefreshableRouteLocator     
