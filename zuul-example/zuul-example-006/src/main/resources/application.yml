@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: proxy-006
+server:
+  port: 3006
+zuul:
+  sensitive-headers:
+  ignored-patterns:
+  host:
+    connect-timeout-millis: 5000
+    socket-timeout-millis: 8000
+  routes:
+    users: # 这里随便起，也可以写成server-id，下面的额serviceId 就可以不写了
+      path: /user/**
+      stripPrefix: false   # 不跳过user 前缀
+      url: http://localhost:3003

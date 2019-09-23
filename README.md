@@ -518,3 +518,6 @@
 ### zuul-example-005
     动态url 路由 可以实时更新
      CustomRouteLocator extends SimpleRouteLocator implements RefreshableRouteLocator     
+### zuul-example-006
+    再请求的时候确定路由信息，并进行改变，可以通过route filter 实现,RequestContext.getCurrentContext().setRouteHost()
+    配置文件里故意写错，有filter进行更改。     

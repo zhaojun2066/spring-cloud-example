@@ -18,6 +18,7 @@
         <module>zuul-example-003</module>
         <module>zuul-example-004</module>
         <module>zuul-example-005</module>
+        <module>zuul-example-006</module>
     </modules>
 
     <dependencies>
