@@ -494,7 +494,7 @@
      普通的server     
 ### zuul-example-001     
      代理zuul-euraka-server，并开始 okhttp client ,并且过滤客户端的cookie,并且过滤服务端代理传递的header
-     设置代理超时时间，配置hystrix 超时时间，配置重试次数
+     设置代理超时时间，配置hystrix 超时时间，配置重试次数等，详见配置application.yml
      首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
      http://localhost:3001/user/hello?what=100     
 ### zuul-example-002  

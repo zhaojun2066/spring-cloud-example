@@ -18,6 +18,11 @@ ribbon:  # Zuul Http Client 默认是 Apache HTTP Client
   okhttp:
     enabled: true
 zuul:
+  ignoredServices: '*' # 不开放所有的服务，只是开放了下面配置的users
+  ignored-patterns:  /**/oauth/token,/gateway/push/**  # 过滤某些url，不进行代理，也就是不对外进行开放
+  ribbon:
+    eager-load:
+      enabled: true  # ribbon 不进行延迟初始化
   threadPool:
     useSeparateThreadPools: true
     threadPoolKeyPrefix: zuulgw
