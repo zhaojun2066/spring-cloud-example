@@ -1,8 +1,8 @@
 spring:
   application:
-    name: proxy-001
+    name: proxy-003
 server:
-  port: 3001
+  port: 3003
 eureka:
   client:
     service-url:
@@ -14,13 +14,8 @@ management:
         include: "*" #暴露所有端点 默认是info,health
 ribbon:  # Zuul Http Client 默认是 Apache HTTP Client
   restclient:
-    enabled: false
-  okhttp:
     enabled: true
 zuul:
-  threadPool:
-    useSeparateThreadPools: true
-    threadPoolKeyPrefix: zuulgw
   routes:
     users: # 这里随便起，也可以写成server-id，下面的额serviceId 就可以不写了
       path: /user/**
@@ -28,14 +23,6 @@ zuul:
       ignoredHeaders: Authorization  # 过滤服务端的header，也就是代理层的header
       stripPrefix: false   # 不跳过user 前缀
       serviceId: user-server
-
-hystrix:
-  command:
-    user-server:  # 服务id
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 8005
 # 设置user-server代理的超时时间
 user-server:
   ribbon:
@@ -45,6 +32,3 @@ user-server:
     ReadTimeout: 3000
     MaxTotalHttpConnections: 500
     MaxConnectionsPerHost: 100
-    OkToRetryOnAllOperations: true #对所有请求都进行重试
-    MaxAutoRetriesNextServer: 2 #切换实例的重试次数
-    MaxAutoRetries: 1 #对当前实例的重试次数

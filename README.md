@@ -453,13 +453,48 @@
 ## zuul-example
     网关
     https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_router_and_filter_zuul
+    time out set:
+    基于服务发现： 通过ribbon 设置超时时间
+    如果是直接代理的url，则通过 zuul.host.connect-timeout-millis 和 zuul.host.socket-timeout-millis 进行设置
+    
+    Hystrix超时需要考虑Ribbon读取和连接超时以及该服务将发生的重试总数。默认情况下，Spring Cloud Zuul将尽力为您
+    计算Hystrix超时，除非您显式指定Hystrix超时：
+    (ribbon.ConnectTimeout + ribbon.ReadTimeout) * (ribbon.MaxAutoRetries + 1) * (ribbon.MaxAutoRetriesNextServer + 1)
+    
+    
+    跨域：
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            public void addCorsMappings(CorsRegistry registry) {
+                registry.addMapping("/path-1/**")
+                        .allowedOrigins("https://allowed-origin.com")
+                        .allowedMethods("GET", "POST");
+            }
+        };
+    }
+    
+    filter ：
+    类型	过滤器	  顺序	        功能
+    pre	 ServletDetectionFilter	-3	标记处理Servlet的类型
+    pre	Servlet30WrapperFilter	-2	包装HttpServletRequest请求
+    pre	FormBodyWrapperFilter	-1	包装请求体
+    pre	DebugFilter	1	标记调试标志
+    pre	PreDecorationFilter	5	处理请求上下文供后续使用
+    route	RibbonRoutingFilter	10	serviceId请求转发
+    route	SimpleHostRoutingFilter	100	url请求转发
+    route	SendForwardFilter	500	forward请求转发
+    error	SendErrorFilter	0	处理有错误的请求响应
+    post	LocationRewriteFilter	900	重定向时，负责将标头重写为Zuul的URL
+    post	SendResponseFilter	1000	组织需要发送回客户端的响应内容
+    
 ### zuul-euraka-server
      注册到 eureka 的server
 ### zuul-example-server
      普通的server     
 ### zuul-example-001     
      代理zuul-euraka-server，并开始 okhttp client ,并且过滤客户端的cookie,并且过滤服务端代理传递的header
-     设置代理超时时间，配置hystrix 超时时间
+     设置代理超时时间，配置hystrix 超时时间，配置重试次数
      首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
      http://localhost:3001/user/hello?what=100     
 ### zuul-example-002  
@@ -468,3 +503,12 @@
     首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
     http://localhost:3002/user/hello?what=100    ,可以正常访问，然后停掉zuul-euraka-server，
     在访问   http://localhost:3002/user/hello?what=100，发现进入fallback
+### zuul-example-003
+    filter：pre，router，post,error
+    首先启动eureka-example/example-001作为注册中心 ，然后启动zuul-euraka-server
+    最后启动自己
+    http://localhost:3003/user/hello?what=100
+    看后台打印和返回的header
+    
+    接着停掉zuul-euraka-server，再次访问http://localhost:3003/user/hello?what=100，进入errorfiler
+        
