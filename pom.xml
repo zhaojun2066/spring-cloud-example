@@ -16,6 +16,7 @@
         <module>config-example</module>
         <module>hystrix-example</module>
         <module>zuul-example</module>
+        <module>stream-example</module>
     </modules>
 
     <parent>

@@ -18,6 +18,7 @@ ribbon:  # Zuul Http Client 默认是 Apache HTTP Client
   okhttp:
     enabled: true
 zuul:
+  retryable: true # 开启全局的重试
   ignoredServices: '*' # 不开放所有的服务，只是开放了下面配置的users
   ignored-patterns:  /**/oauth/token,/gateway/push/**  # 过滤某些url，不进行代理，也就是不对外进行开放
   ribbon:

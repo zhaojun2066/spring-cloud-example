@@ -521,3 +521,22 @@
 ### zuul-example-006
     再请求的时候确定路由信息，并进行改变，可以通过route filter 实现,RequestContext.getCurrentContext().setRouteHost()
     配置文件里故意写错，有filter进行更改。     
+##  stream-example
+    spring cloud srream 是基于spring integration 实现。
+    事例 用kafka 作为作为中间件 binder
+     Binder：是对中间件的抽象，通过与外部中间件连接的实现为 binder
+     Binding： 用于创建 input和output两种类型的管道
+     Channel ： 管道 ，发送和接受消息，也就是input和output实现类 
+     Input： 用于订阅消息
+     Output: 用于输出message ，也就是send，发布消息
+     middleware: 中间件 kafka、rabbitmq    
+### stream-example-001
+     手动订阅消息  
+     sink.input().subscribe
+### stream-example-002
+      @StreamListener(Sink.INPUT)  实现订阅消息   
+      通过注解获取header 和 全部header  ,@Header,@Headers
+      注意：如果@StreamListener注解的方法有返回值，那么必须使用@SendTo注解指明返回的值写入哪个通道     
+### stream-example-003
+    Spring Cloud Stream 可以有任意数量的通道，默认spring cloud 自带了 Source 、Sink、Processer
+    自定义通道测试      
