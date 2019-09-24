@@ -522,7 +522,7 @@
     再请求的时候确定路由信息，并进行改变，可以通过route filter 实现,RequestContext.getCurrentContext().setRouteHost()
     配置文件里故意写错，有filter进行更改。     
 ##  stream-example
-    spring cloud srream 是基于spring integration 实现。
+    spring cloud stream 是基于spring integration 实现。
     事例 用kafka 作为作为中间件 binder
      Binder：是对中间件的抽象，通过与外部中间件连接的实现为 binder
      Binding： 用于创建 input和output两种类型的管道
@@ -540,3 +540,8 @@
 ### stream-example-003
     Spring Cloud Stream 可以有任意数量的通道，默认spring cloud 自带了 Source 、Sink、Processer
     自定义通道测试      
+### stream-example-004
+    消息的分布功能   @StreamListener
+    根据hello 的值不同，找不同的处理管道
+    @StreamListener(value = Sink.INPUT,condition = "headers['hello']=='word'")
+    @StreamListener(value = Sink.INPUT,condition = "headers['hello']=='hello'")

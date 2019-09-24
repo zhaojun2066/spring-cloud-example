@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: stream-example-004
+  kafka:
+    bootstrap-servers: 10.12.52.21:9092
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: test4
+        output:
+          destination: test4
+server:
+  port: 2004
