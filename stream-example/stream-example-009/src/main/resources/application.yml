@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: stream-example-009
+  kafka:
+    bootstrap-servers: 10.12.52.21:9092
+  cloud:
+    stream:
+      binder: kafka # 不写 就是默认加载的
+      bindings:
+        myInput:
+          concurrency: 2 # 并发数，可以根据启动的实例数 来改变设置
+          destination: test92
+          group: group-a
+          consumer:
+            partitioned: true # 是否接受来自分区的数据
+        helloInput:
+          concurrency: 2 # 并发数，可以根据启动的实例数 来改变设置
+          destination: test9
+          group: group-a
+          consumer:
+            partitioned: true # 是否接受来自分区的数据
+        wordInput:
+          concurrency: 2 # 并发数，可以根据启动的实例数 来改变设置
+          destination: test91
+          group: group-a
+          consumer:
+            partitioned: true # 是否接受来自分区的数据
+server:
+  port: 2009

@@ -564,3 +564,6 @@
     
 ### stream-example-008
     @SendTo 消费消息有返回值的情况，要输出到另外一个管道    
+
+### stream-example-009
+    运行时 动态设置管道    
