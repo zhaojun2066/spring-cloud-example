@@ -1,4 +1,4 @@
-package com.jufeng.cloud.stream001;
+package com.jufeng.cloud.stream006;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -6,7 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.messaging.Sink;
-import org.springframework.cloud.stream.messaging.Source;
 
 /**
  * @program: spring-cloud-example
@@ -15,7 +14,7 @@ import org.springframework.cloud.stream.messaging.Source;
  * @create: 2019-09-24 14:14
  **/
 
-@EnableBinding({Source.class, Sink.class})
+@EnableBinding({Sink.class})
 @SpringBootApplication
 public class AppStream implements CommandLineRunner {
 
@@ -28,7 +27,5 @@ public class AppStream implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        service.subscribeMessage();// 先订阅
-        service.sendMessage("hello stream 1111");
     }
 }

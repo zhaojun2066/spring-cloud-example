@@ -529,7 +529,16 @@
      Channel ： 管道 ，发送和接受消息，也就是input和output实现类 
      Input： 用于订阅消息
      Output: 用于输出message ，也就是send，发布消息
-     middleware: 中间件 kafka、rabbitmq    
+     middleware: 中间件 kafka、rabbitmq
+     
+     注意：
+     如果引入一个Binder 的实现，那么默认所有的管道都会绑定到这个binder上，现在就是kafka，如果是多个，
+     需要指定通道的Binder进行配置
+     spring.cloud.stream.bindings.通道名称.binder=Binder名称  ，
+     或者设置默认的Binder
+     spring.cloud.stream.defaultBinder=Binder名称
+     
+       
 ### stream-example-001
      手动订阅消息  
      sink.input().subscribe
@@ -545,3 +554,12 @@
     根据hello 的值不同，找不同的处理管道
     @StreamListener(value = Sink.INPUT,condition = "headers['hello']=='word'")
     @StreamListener(value = Sink.INPUT,condition = "headers['hello']=='hello'")
+
+### stream-example-005  stream-example-006  stream-example-007   
+    stream-example-005 producer 支持分区设置
+    stream-example-006 consumer 读取分区0的数据
+    stream-example-007 consumer 读取分区1的数据
+    
+    先启动stream-example-006 stream-example-007，然后启动stream-example-005 发送数据，看接受端输出
+    
+    

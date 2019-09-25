@@ -7,8 +7,8 @@ spring:
     stream:
       bindings:
         input:
-          destination: test
+          destination: test2
         output:
-          destination: test
+          destination: test2
 server:
   port: 2001

@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: stream-example-005
+  kafka:
+    bootstrap-servers: 10.12.52.21:9092
+  cloud:
+    stream:
+      instance-index: 0  # 从哪个分区接受数据
+      instance-count: 2 # 实例数，也就是分区数
+      bindings:
+        output:
+          content-type: application/json
+          destination: test5
+          producer:
+            partitionCount: 2  # 分区数量
+            partitionKeyExpression: headers['partitionKey'] # 分区表达式
+server:
+  port: 2005

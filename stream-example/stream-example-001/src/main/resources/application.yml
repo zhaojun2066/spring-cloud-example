@@ -7,6 +7,7 @@ spring:
     stream:
       bindings:
         input:
+          group: test-g
           destination: test
         output:
           destination: test

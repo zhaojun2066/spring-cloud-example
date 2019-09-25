@@ -7,8 +7,8 @@ spring:
     stream:
       bindings:
         myInput:
-          destination: test1   # 指定topic
+          destination: test3   # 指定topic
         myOutput:
-          destination: test1
+          destination: test3
 server:
   port: 2003
