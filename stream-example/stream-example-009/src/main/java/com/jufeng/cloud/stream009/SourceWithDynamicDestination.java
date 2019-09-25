@@ -5,10 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.EnableBinding;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.cloud.stream.binding.BinderAwareChannelResolver;
+import org.springframework.cloud.stream.messaging.Source;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
+
 
 /**
  * @program: spring-cloud-example
@@ -17,7 +19,7 @@ import org.springframework.util.StringUtils;
  * @create: 2019-09-25 14:38
  **/
 @Slf4j
-@EnableBinding(MyPipe.class)
+@EnableBinding({Source.class,MyPipe.class})
 @Component
 public class SourceWithDynamicDestination {
 
@@ -35,7 +37,7 @@ public class SourceWithDynamicDestination {
         }else {
             messageChannel= resolver.resolveDestination("myInput");
         }
-        messageChannel.send(MessageBuilder.withPayload("hello").build());
+        messageChannel.send(MessageBuilder.withPayload(msg).build());
     }
 
 

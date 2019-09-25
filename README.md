@@ -564,6 +564,16 @@
     
 ### stream-example-008
     @SendTo 消费消息有返回值的情况，要输出到另外一个管道    
-
 ### stream-example-009
     运行时 动态设置管道    
+ 
+### stream-example-010
+    自定义消息转换器 ，需要使用 @StreamConverter 注释 进行限定才可以
+    消息转换器，默认不写就是application/json	
+    
+    框架需要@StreamMessageConverter限定符注释，以避免获取到ApplicationContext上可能存在的其他转换器，并可能与默认的转换器重叠。 
+     如果你的消息转换器需要使用特定的content-type和目标类（对于输入和输出），则消息转换器需要扩展
+    org.springframework.messaging.converter.AbstractMessageConverter。若使用@StreamListener进行转换，一个实现
+    org.springframework.messaging.converter.MessageConverter的消息转换器就足够了。 
+     本例子是在Spring Cloud Stream应用程序中创建消息转换器bean（带有内容类型application/bar）的示例
+       
