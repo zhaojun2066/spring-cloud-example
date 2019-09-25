@@ -5,10 +5,12 @@ spring:
     bootstrap-servers: 10.12.52.21:9092
   cloud:
     stream:
+      binder: kafka # 不写 就是默认加载的
       instance-index: 1  # 从哪个分区接受数据
       instance-count: 2 # 实例数，也就是分区数
       bindings:
         input:
+          concurrency: 1 # 并发数，可以根据启动的实例数 来改变设置
           destination: test5
           group: group-a
           consumer:

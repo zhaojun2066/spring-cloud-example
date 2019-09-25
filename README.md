@@ -562,4 +562,5 @@
     
     先启动stream-example-006 stream-example-007，然后启动stream-example-005 发送数据，看接受端输出
     
-    
+### stream-example-008
+    @SendTo 消费消息有返回值的情况，要输出到另外一个管道    
