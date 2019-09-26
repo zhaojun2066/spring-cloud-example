@@ -801,4 +801,5 @@
     org.springframework.messaging.converter.AbstractMessageConverter。若使用@StreamListener进行转换，一个实现
     org.springframework.messaging.converter.MessageConverter的消息转换器就足够了。 
      本例子是在Spring Cloud Stream应用程序中创建消息转换器bean（带有内容类型application/bar）的示例
-       
+### stream-example-011
+     kafka 手动提交offset       

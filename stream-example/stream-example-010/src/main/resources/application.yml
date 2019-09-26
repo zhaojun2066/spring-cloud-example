@@ -8,6 +8,7 @@ spring:
       bindings:
         input:
           destination: test10
+        group: grupa
         output:
           destination: test10
 server:
