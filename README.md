@@ -786,6 +786,7 @@
     stream-example-007 consumer 读取分区1的数据
     
     先启动stream-example-006 stream-example-007，然后启动stream-example-005 发送数据，看接受端输出
+    停掉任何一个，都可以进行自动重新平衡消费的。
     
 ### stream-example-008
     @SendTo 消费消息有返回值的情况，要输出到另外一个管道    
@@ -803,3 +804,6 @@
      本例子是在Spring Cloud Stream应用程序中创建消息转换器bean（带有内容类型application/bar）的示例
 ### stream-example-011
      kafka 手动提交offset       
+### stream-example-012
+    错误处理 
+    @ServiceActivator(inputChannel = "test12.group-aa.errors")     

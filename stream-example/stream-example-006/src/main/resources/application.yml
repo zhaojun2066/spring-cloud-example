@@ -5,6 +5,11 @@ spring:
     bootstrap-servers: 10.12.52.21:9092
   cloud:
     stream:
+      kafka:
+        bindings:
+          input:
+            consumer:
+              autoRebalanceEnabled: true # 默认是true,设置为false 不会进行自动重新负载
       instance-index: 0  # 从哪个分区接受数据
       instance-count: 2 # 实例数，也就是分区数
       bindings:
