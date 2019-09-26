@@ -538,9 +538,83 @@
      或者设置默认的Binder
      spring.cloud.stream.defaultBinder=Binder名称
      
+     
+     
      【属性说明】
      
-      Kafka 绑定（binder）属性】：
+     【生产者属性公共属性】;
+     以下绑定属性可用于输出绑定，但只能并必须以spring.cloud.stream.bindings.<channelName>.producer.为前缀。
+     例如，spring.cloud.stream.bindings.input.producer.partitionKeyExpression=payload.id。 
+       默认值可以使用spring.cloud.stream.default.producer前缀来设置，
+     例如，spring.cloud.stream.default.producer.partitionKeyExpression=payload.id。 
+     partitionKeyExpression 
+       决定如何分区流出数据的SpEL表达式。如果设置，或者设置了partitionKeuExtractorClass，这个通道的流出数据会被分区，
+     且partitionCount必须设置为大于1的值才能生效。这两个选项是互斥的。参阅分区支持。 
+       默认值为：null。 
+     partitionKeyExtractorClass 
+       PartitionKeyExtractorStrategy的实现。如果设置，或者设置了partitionKeyExpression，此通道的流出数据会被分区，
+     且partitionCount必须设置为大于1的值才能生效。这两个选项是互斥的。参阅分区支持。 
+       默认值为：null。 
+     partitionSelectorClass 
+       PartitionSelecctorStrategy的实现。和partitionSelecorExpression互斥。如果设置了其中一个，分区将被选择为hashCode(key) % partitionCount，
+     其中的key是通过partitionKeyExpression或partitionKeyExtractorClass来计算的。 
+       默认值为：null。 
+     partitionSelectorExpression 
+       用于自定义分区选择的SpEL表达式。和partitionSelectorClass互斥。如果设置了其中一个，分区将被选择为hashCode(key) % partitionCount，
+     其中的key是通过partitionKeyExpression或partitionKeyExtractorClass来计算的。 
+       默认值为：null。 
+     partitionCount 
+       数据的目标分区的数量（如果分区已启用）。 如果生产者是分区的，则必须设置为大于1的值。 在Kafka上意味着使用 此值和目标主题分区数量中的较大值。 
+       默认值为：1。 
+     requiredGroups 
+       生产者必须确保消息传递的组群列表（逗号分隔），即使它们是在创建之后启动的（例如，通过在RabbitMQ中预先创建持久队列）。 
+     headerMode 
+       设置为none时，禁用输出上的头部嵌入。 仅对本身不支持消息头但需要嵌入头部的消息中间件有效。 
+     当从非Spring Cloud Stream应用消费数据而原生头部不被支持的时候，
+     此选项非常有用。如果设置为headers，使用使用中间件本身的头部机制。如果设置为embeddedHeaders，在消息负载中嵌入头部。 
+       默认值为：取决于binder实现。 
+     useNativeEncoding 
+       设置为true时，流出消息将直接由客户端库序列化，客户端库必须相应地进行配置（例如，设置适当的Kafka生产者value serializer）。 
+     使用此配置时，流出消息编组不是基于绑定的contentType。 当使用本地编码时，消费者有责任使用适当的解码器（例如：Kafka消费者value de-serializer）
+     来反序列化流入消息。 而且，当使用本地编码/解码时，headerMode = embeddedHeaders属性将被忽略，并且头部不会嵌入到消息中。 
+     errorChannelEnabled 
+       设置为true时，如果binder支持异步发送结果; 发送失败的消息将被发送到目的地（destination）的错误通道。 
+     有关更多信息，请参阅消息通道绑定和错误通道。 
+       默认值为：false。
+      
+     【消费者公共属性】
+     下边的绑定属性值对输入绑定可用的且必须以spring.cloud.stream.bindings.<channelName>.consumer为前缀。
+     例如，spring.cloud.stream.bindings.input.consumer.concurrency=3。 
+       默认值可以使用spring.cloud.stream.default.consumer前缀来设置，
+     例如，spring.cloud.stream.default.consumer.headerMode=none。 
+      concurrency 
+        流入消费者的并发性。 
+        默认为：1。 
+      partitioned 
+        消费者是否接受来自一个分区的生产者数据。 
+        默认为：false。 
+      headerMode 
+        如果设置为none，则禁用输入的头部处理。仅对本身不支持消息头但需要嵌入头部的消息传递中间件有效。 
+      当从非Spring Cloud Stream应用消费数据而原生头部不被支持的时候，此选项非常有用。如果设置为headers，
+      使用使用中间件本身的头部机制。如果设置为embeddedHeaders，在消息负载中嵌入头部。 
+        默认为：取决于binder实现。 
+      maxAttempts 
+        如果处理失败，则尝试处理该消息的次数（包括第一次）。 设置为1以禁用重试。 
+        默认值为： 3。 
+      backOffInitialInterval 
+        回退乘数 
+        默认值为：2.0。 
+      instanceIndex 
+        当设置为大于等于0的值的时候，允许自定义此消费者的实例索引（如果与spring.cloud.stream.instanceIndex不同）。
+      当设置为一个负值的时候，默认为spring.cloud.stream.instanceIndex。 
+        默认值为：-1。 
+      instanceCount 
+        当设置为大于等于0的值的时候，允许自定义此消费者的实例数量（如果不同于spring.cloud.stream.instanceCount）。
+      如果设置为负值，默认为spring.cloud.stream.instanceCount。 
+        默认值为：-1。
+      
+      
+      【Kafka 绑定（binder）属性】：
       spring.cloud.stream.kafka.binder.brokers 
         Kafka绑定（binder）将连接到的代理（broker）列表。 
         默认为： localhost。 
@@ -603,35 +677,7 @@
        默认为：查看各个生产者属性。
        
      【Kafka 消费者属性】：
-     
      以下属性仅供Kafka使用者使用，且必须以spring.cloud.stream.kafka.bindings.<channelName>.consumer.为前缀。 
-     默认值可以使用spring.cloud.stream.default.consumer前缀来设置。
-     concurrency 
-       流入消费者的并发性。 
-       默认为：1。 
-     partitioned 
-       消费者是否接受来自一个分区的生产者数据。 
-       默认为：false。 
-     headerMode 
-       如果设置为none，则禁用输入的头部处理。仅对本身不支持消息头但需要嵌入头部的消息传递中间件有效。 
-     当从非Spring Cloud Stream应用消费数据而原生头部不被支持的时候，此选项非常有用。如果设置为headers，
-     使用使用中间件本身的头部机制。如果设置为embeddedHeaders，在消息负载中嵌入头部。 
-       默认为：取决于binder实现。 
-     maxAttempts 
-       如果处理失败，则尝试处理该消息的次数（包括第一次）。 设置为1以禁用重试。 
-       默认值为： 3。 
-     backOffInitialInterval 
-       回退乘数 
-       默认值为：2.0。 
-     instanceIndex 
-       当设置为大于等于0的值的时候，允许自定义此消费者的实例索引（如果与spring.cloud.stream.instanceIndex不同）。
-     当设置为一个负值的时候，默认为spring.cloud.stream.instanceIndex。 
-       默认值为：-1。 
-     instanceCount 
-       当设置为大于等于0的值的时候，允许自定义此消费者的实例数量（如果不同于spring.cloud.stream.instanceCount）。
-     如果设置为负值，默认为spring.cloud.stream.instanceCount。 
-       默认值为：-1。
-     
      autoRebalanceEnabled 
        如果为true，则主题（topic）分区将在消费者组的成员之间自动重新平衡。 如果为false，
      则会根据spring.cloud.stream.instanceCount和spring.cloud.stream.instanceIndex为每个使用者分配一组固定的分区。 
@@ -672,45 +718,7 @@
        默认为：null（如果未指定，则导致错误的消息将被转发到名为error.<destination>.<group>的主题（topic）。
      
     【 Kafka生产者属性】：
-     
      以下属性仅适用于Kafka生产者，必须以spring.cloud.stream.kafka.bindings.<channelName>.producer.为前缀。
-     默认值可以使用spring.cloud.stream.default.producer前缀来设置。
-     
-     partitionKeyExpression 
-       决定如何分区流出数据的SpEL表达式。如果设置，或者设置了partitionKeuExtractorClass，这个通道的流出数据会被分区，
-     且partitionCount必须设置为大于1的值才能生效。这两个选项是互斥的。参阅分区支持。 
-       默认值为：null。 
-     partitionKeyExtractorClass 
-       PartitionKeyExtractorStrategy的实现。如果设置，或者设置了partitionKeyExpression，此通道的流出数据会被分区，
-     且partitionCount必须设置为大于1的值才能生效。这两个选项是互斥的。参阅分区支持。 
-       默认值为：null。 
-     partitionSelectorClass 
-       PartitionSelecctorStrategy的实现。和partitionSelecorExpression互斥。如果设置了其中一个，分区将被选择为hashCode(key) % partitionCount，
-     其中的key是通过partitionKeyExpression或partitionKeyExtractorClass来计算的。 
-       默认值为：null。 
-     partitionSelectorExpression 
-       用于自定义分区选择的SpEL表达式。和partitionSelectorClass互斥。如果设置了其中一个，分区将被选择为hashCode(key) % partitionCount，
-     其中的key是通过partitionKeyExpression或partitionKeyExtractorClass来计算的。 
-       默认值为：null。 
-     partitionCount 
-       数据的目标分区的数量（如果分区已启用）。 如果生产者是分区的，则必须设置为大于1的值。 在Kafka上意味着使用 此值和目标主题分区数量中的较大值。 
-       默认值为：1。 
-     requiredGroups 
-       生产者必须确保消息传递的组群列表（逗号分隔），即使它们是在创建之后启动的（例如，通过在RabbitMQ中预先创建持久队列）。 
-     headerMode 
-       设置为none时，禁用输出上的头部嵌入。 仅对本身不支持消息头但需要嵌入头部的消息中间件有效。 
-     当从非Spring Cloud Stream应用消费数据而原生头部不被支持的时候，
-     此选项非常有用。如果设置为headers，使用使用中间件本身的头部机制。如果设置为embeddedHeaders，在消息负载中嵌入头部。 
-       默认值为：取决于binder实现。 
-     useNativeEncoding 
-       设置为true时，流出消息将直接由客户端库序列化，客户端库必须相应地进行配置（例如，设置适当的Kafka生产者value serializer）。 
-     使用此配置时，流出消息编组不是基于绑定的contentType。 当使用本地编码时，消费者有责任使用适当的解码器（例如：Kafka消费者value de-serializer）
-     来反序列化流入消息。 而且，当使用本地编码/解码时，headerMode = embeddedHeaders属性将被忽略，并且头部不会嵌入到消息中。 
-     errorChannelEnabled 
-       设置为true时，如果binder支持异步发送结果; 发送失败的消息将被发送到目的地（destination）的错误通道。 
-     有关更多信息，请参阅消息通道绑定和错误通道。 
-       默认值为：false。
-      
      bufferSize 
        Kafka 生产者在发送之前将尝试批量处理多少数据的上限（以字节为单位）。 
        默认为：16384。 
