@@ -538,7 +538,200 @@
      或者设置默认的Binder
      spring.cloud.stream.defaultBinder=Binder名称
      
+     【属性说明】
+     
+      Kafka 绑定（binder）属性】：
+      spring.cloud.stream.kafka.binder.brokers 
+        Kafka绑定（binder）将连接到的代理（broker）列表。 
+        默认为： localhost。 
+      spring.cloud.stream.kafka.binder.defaultBrokerPort 
+        代理（broker）允许指定具有或不具有端口信息的主机（例如，host1，host2：port2）。 
+      当代理列表（broker）中没有配置端口时，将设置默认端口。
+      默认为： 9092
+      
+      spring.cloud.stream.kafka.binder.zkNodes 
+        Kafka绑定（binder）可以连接的ZooKeeper节点列表。 
+        默认为： localhost。 
+      spring.cloud.stream.kafka.binder.defaultZkPort 
+        zkNodes允许指定具有或不具有端口信息的主机（例如，host1，host2：port2）。 当节点列表中没有配置端口时，将设置默认端口。 
+        默认为： 2181。 
+     spring.cloud.stream.kafka.binder.configuration 
+       传递给由绑定器创建的所有客户端的用户属性（包括生产者和消费者）的键/值 map。 由于生产者和消费者都会使用这些属性，因此应该将使用限制在公共属性中，特别是安全设置。 
+       默认为： 空map。 
+     spring.cloud.stream.kafka.binder.headers 
+       将由绑定（binder）传输的自定义头部的列表。 
+       默认为： 空。 
+     spring.cloud.stream.kafka.binder.healthTimeout 
+       以秒为单位的等待分区信息的时间，默认值60。如果此计时器到期，运行状况将报告为down。 
+       默认为： 10。 
+     spring.cloud.stream.kafka.binder.offsetUpdateTimeWindow 
+       以毫秒为单位的保存偏移量的频率。 如果为0，则忽略。 
+       默认为： 10000。 
+     spring.cloud.stream.kafka.binder.offsetUpdateCount 
+       持续消费偏移量更新数量的频率（The frequency, in number of updates, which which consumed offsets are persisted.）。 
+         如果为0，则忽略。与offsetUpdateTimeWindow互斥。 
+       默认为： 0。 
+     spring.cloud.stream.kafka.binder.requiredAcks 
+       需要代理（broker）受到应答的数量。 
+       默认为： 1。 
+     spring.cloud.stream.kafka.binder.minPartitionCount 
+       仅在设置autoCreateTopics或autoAddPartitions时有效。 绑定（binder）将在其生产/消费数据的主题（topic）上配置的分区的全局最小数量。 
+     它可以被生产者的partitionCount设置或生产者的instanceCount * concurrency设置的值所替代（其中较大的值）。 
+       默认为： 1。 
+     spring.cloud.stream.kafka.binder.replicationFactor 
+       autoCreateTopics处于活动状态时,自动创建主题（topics ）复制因子（ replication factor ）。 
+       默认为： 1。 
+     spring.cloud.stream.kafka.binder.autoCreateTopics 
+       如果设置为true，则绑定（binder）将自动创建新的主题（topic）。 如果设置为false，则绑定（binder）将依赖于已经配置的主题（topic）。 
+     在后一种情况下，如果主题（topic）不存在，绑定（binder）将无法启动。 值得注意的是，此设置与代理（topic）的auto.topic.create.enable设置无关，
+     并且不影响代理：如果服务器设置为自动创建主题（topic），则可以将它们和默认代理设置一起创建为元数据检索请求的一部分。 
+       默认为： true。 
+     spring.cloud.stream.kafka.binder.autoAddPartitions 
+       如果设置为true，则绑定（binder）将根据需要创建添加新分区。 如果设置为false，则绑定（binder）将依赖于已经配置的主题的分区大小。 
+     如果目标主题的分区数量小于期望值，绑定（binder）将无法启动。 
+       默认为： false。 
+     spring.cloud.stream.kafka.binder.socketBufferSize 
+       Kafka消费者使用的套接字缓冲区的大小（以字节为单位）。 
+       默认为： 2097152。 
+     spring.cloud.stream.kafka.binder.transaction.transactionIdPrefix 
+       在绑定（binder）中启用事务; 请参阅Kafka文档中的transaction.id和spring-kafka文档中的事务。 启用事务时，将忽略各个的producer属性，
+     并且所有生产者都使用spring.cloud.stream.kafka.binder.transaction.producer.*属性。 
+       默认为： null（没有事务）。 
+     spring.cloud.stream.kafka.binder.transaction.producer. 
+       事务绑定（binder）中生产者的全局生产者属性。 请参阅spring.cloud.stream.kafka.binder.transaction.transactionIdPrefix和
+     [Kafka Producer Properties以及所有绑定（binder）支持的常规生产者属性。 
+       默认为：查看各个生产者属性。
        
+     【Kafka 消费者属性】：
+     
+     以下属性仅供Kafka使用者使用，且必须以spring.cloud.stream.kafka.bindings.<channelName>.consumer.为前缀。 
+     默认值可以使用spring.cloud.stream.default.consumer前缀来设置。
+     concurrency 
+       流入消费者的并发性。 
+       默认为：1。 
+     partitioned 
+       消费者是否接受来自一个分区的生产者数据。 
+       默认为：false。 
+     headerMode 
+       如果设置为none，则禁用输入的头部处理。仅对本身不支持消息头但需要嵌入头部的消息传递中间件有效。 
+     当从非Spring Cloud Stream应用消费数据而原生头部不被支持的时候，此选项非常有用。如果设置为headers，
+     使用使用中间件本身的头部机制。如果设置为embeddedHeaders，在消息负载中嵌入头部。 
+       默认为：取决于binder实现。 
+     maxAttempts 
+       如果处理失败，则尝试处理该消息的次数（包括第一次）。 设置为1以禁用重试。 
+       默认值为： 3。 
+     backOffInitialInterval 
+       回退乘数 
+       默认值为：2.0。 
+     instanceIndex 
+       当设置为大于等于0的值的时候，允许自定义此消费者的实例索引（如果与spring.cloud.stream.instanceIndex不同）。
+     当设置为一个负值的时候，默认为spring.cloud.stream.instanceIndex。 
+       默认值为：-1。 
+     instanceCount 
+       当设置为大于等于0的值的时候，允许自定义此消费者的实例数量（如果不同于spring.cloud.stream.instanceCount）。
+     如果设置为负值，默认为spring.cloud.stream.instanceCount。 
+       默认值为：-1。
+     
+     autoRebalanceEnabled 
+       如果为true，则主题（topic）分区将在消费者组的成员之间自动重新平衡。 如果为false，
+     则会根据spring.cloud.stream.instanceCount和spring.cloud.stream.instanceIndex为每个使用者分配一组固定的分区。 
+     这需要在每个启动的实例上正确设置spring.cloud.stream.instanceCount和spring.cloud.stream.instanceIndex属性。 
+     在这种情况下，属性spring.cloud.stream.instanceCount通常必须大于1。 
+       默认为： true。 
+     autoCommitOffset 
+       是否在处理消息完成后自动提交偏移量。 如果设置为false，则在流入消息中将包含一个类型为
+     org.springframework.kafka.support.Acknowledgment的keykafka_acknowledgment的头部。 
+     应用可以使用这个头来确认消息。 详细信息请参阅示例部分。 当此属性设置为···false···时，Kafka绑定（binder）
+     将把应答确认模式设置为org.springframework.kafka.listener.AbstractMessageListenerContainer.AckMode.MANUAL。 
+       默认为： true。 
+     autoCommitOnError 
+       仅在autoCommitOffset设置为true时有效。 如果设置为false，则会取消导致错误的消息的自动提交，并且只会提交成功的消息，
+     允许流从上次成功处理的消息中自动重放，以防发生持续失败。 如果设置为true，它将始终自动提交（如果启用了自动提交）。 
+     如果未设置（默认），则它与enableDlq实际上具有相同的值，如果消息被发送到DLQ，则自动提交错误消息，否则不提交它们。 
+       默认为：not set。 
+     recoveryInterval 
+       尝试恢复连接的间隔，以毫秒为单位。 
+       默认为：5000。 
+     resetOffsets 
+       是否将消费者的偏移量重置为startOffset提供的值。 
+       默认为：false。 
+     startOffset 
+       新组的量起始偏移。 允许值：earliest，latest。 如果消费者组被显式设置为消费者“绑定”（
+     通过spring.cloud.stream.bindings.<channelName> .group），那么’startOffset’被设置为earliest; 否则将其设置为anonymous消费者组的latest。 
+       默认为：null （等同于earliest）。 
+     enableDlq 
+       设置为true时，它将为消费者发送启用DLQ行为。 默认情况下，导致错误的消息将被转发到名为error.<destination>.<group>的主题（topic）。
+      DLQ主题（topic）名称可以通过属性dlqName进行配置。 当错误数量相对较少时，这为更常见的Kafka重放场景提供了一个替代选项，
+      但重放整个原来的主题可能太麻烦。 
+       默认为：false。 
+     configuration 
+       包含通用Kafka消费者属性的键/值对的Map。 
+       默认为：Empty map。 
+     dlqName 
+       接收错误消息的DLQ主题（topic ）的名称。 
+       默认为：null（如果未指定，则导致错误的消息将被转发到名为error.<destination>.<group>的主题（topic）。
+     
+    【 Kafka生产者属性】：
+     
+     以下属性仅适用于Kafka生产者，必须以spring.cloud.stream.kafka.bindings.<channelName>.producer.为前缀。
+     默认值可以使用spring.cloud.stream.default.producer前缀来设置。
+     
+     partitionKeyExpression 
+       决定如何分区流出数据的SpEL表达式。如果设置，或者设置了partitionKeuExtractorClass，这个通道的流出数据会被分区，
+     且partitionCount必须设置为大于1的值才能生效。这两个选项是互斥的。参阅分区支持。 
+       默认值为：null。 
+     partitionKeyExtractorClass 
+       PartitionKeyExtractorStrategy的实现。如果设置，或者设置了partitionKeyExpression，此通道的流出数据会被分区，
+     且partitionCount必须设置为大于1的值才能生效。这两个选项是互斥的。参阅分区支持。 
+       默认值为：null。 
+     partitionSelectorClass 
+       PartitionSelecctorStrategy的实现。和partitionSelecorExpression互斥。如果设置了其中一个，分区将被选择为hashCode(key) % partitionCount，
+     其中的key是通过partitionKeyExpression或partitionKeyExtractorClass来计算的。 
+       默认值为：null。 
+     partitionSelectorExpression 
+       用于自定义分区选择的SpEL表达式。和partitionSelectorClass互斥。如果设置了其中一个，分区将被选择为hashCode(key) % partitionCount，
+     其中的key是通过partitionKeyExpression或partitionKeyExtractorClass来计算的。 
+       默认值为：null。 
+     partitionCount 
+       数据的目标分区的数量（如果分区已启用）。 如果生产者是分区的，则必须设置为大于1的值。 在Kafka上意味着使用 此值和目标主题分区数量中的较大值。 
+       默认值为：1。 
+     requiredGroups 
+       生产者必须确保消息传递的组群列表（逗号分隔），即使它们是在创建之后启动的（例如，通过在RabbitMQ中预先创建持久队列）。 
+     headerMode 
+       设置为none时，禁用输出上的头部嵌入。 仅对本身不支持消息头但需要嵌入头部的消息中间件有效。 
+     当从非Spring Cloud Stream应用消费数据而原生头部不被支持的时候，
+     此选项非常有用。如果设置为headers，使用使用中间件本身的头部机制。如果设置为embeddedHeaders，在消息负载中嵌入头部。 
+       默认值为：取决于binder实现。 
+     useNativeEncoding 
+       设置为true时，流出消息将直接由客户端库序列化，客户端库必须相应地进行配置（例如，设置适当的Kafka生产者value serializer）。 
+     使用此配置时，流出消息编组不是基于绑定的contentType。 当使用本地编码时，消费者有责任使用适当的解码器（例如：Kafka消费者value de-serializer）
+     来反序列化流入消息。 而且，当使用本地编码/解码时，headerMode = embeddedHeaders属性将被忽略，并且头部不会嵌入到消息中。 
+     errorChannelEnabled 
+       设置为true时，如果binder支持异步发送结果; 发送失败的消息将被发送到目的地（destination）的错误通道。 
+     有关更多信息，请参阅消息通道绑定和错误通道。 
+       默认值为：false。
+      
+     bufferSize 
+       Kafka 生产者在发送之前将尝试批量处理多少数据的上限（以字节为单位）。 
+       默认为：16384。 
+     sync 
+       生产者是否为异步的。 
+       默认为：false。 
+     batchTimeout 
+       在发送之前，生产者需要等待多长时间才能让更多的消息在同一批次中累积。 （通常情况下，生产者根本不会等待，
+     只是发送前一次发送过程中累积的所有消息。）非零值可能会增加吞吐量，但会提高延迟。 
+       默认为：0。 
+     messageKeyExpression 
+       根据流出消息计算的SpEL表达式，用于填充生成的Kafka消息的key。 例如headers.key或payload.myKey。 
+       默认为：none。 
+     headerPatterns 
+       以逗号分隔的简单模式列表，用于匹配Spring消息头以映射到ProducerRecord中的kafka headers。 模式可以以通配符（星号）
+     开始或结束。 模式可以通过用!前缀来取反。 匹配在第一次匹配成功后停止（positive or negative）。 例如!foo,fo *会通过fox
+     但foo不会通过。 id和timestamp不会进行映射。 
+       默认为：*（除了id和timestamp之外的所有头部）。 
+     configuration 
+       包含通用Kafka生产者属性的键/值对的Map。 
+       默认为：Empty map  
 ### stream-example-001
      手动订阅消息  
      sink.input().subscribe

@@ -1,10 +1,16 @@
 spring:
   application:
     name: stream-example-001
-  kafka:
-    bootstrap-servers: 10.12.52.21:9092
+  #kafka:
+    #bootstrap-servers: 10.12.52.21:9092
   cloud:
     stream:
+      kafka: # 设置kafka binder
+        binder:
+          brokers: 10.12.52.21:9092, 10.12.52.22:9092, 10.12.52.23:9092
+          defaultBrokerPort: 9092
+          zkNodes: 10.12.52.21:2181, 10.12.52.22:2181, 10.12.52.23:2181
+          defaultZkPort: 2181
       bindings:
         input:
           group: test-g
