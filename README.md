@@ -550,12 +550,36 @@
     Spring Cloud Stream 可以有任意数量的通道，默认spring cloud 自带了 Source 、Sink、Processer
     自定义通道测试      
 ### stream-example-004
-    消息的分布功能   @StreamListener
+    消息的分发功能   @StreamListener
     根据hello 的值不同，找不同的处理管道
     @StreamListener(value = Sink.INPUT,condition = "headers['hello']=='word'")
     @StreamListener(value = Sink.INPUT,condition = "headers['hello']=='hello'")
 
 ### stream-example-005  stream-example-006  stream-example-007   
+    分区：
+    如何计算分区key，可以通过下面两种方式
+    过配置partitionKeyExpression或者partitionKeyExtractorClass属性中的一个（并且只能配置一个），
+    以及partitionCount属性来配置配置输出绑定，例如：
+    spring.cloud.stream.bindings.output.producer.partitionKeyExpression=payload.id
+    spring.cloud.stream.bindings.output.producer.partitionCount=5
+    
+    根据partitionKeyExpression计算每个发送到分区的输出通道的消息的分区键值（partition key’s value）
+    partitionKeyExpression是一个根据流出消息计算的SpEL表达式，用于取得分区的key（partitioning key）。
+    
+    如果一个SpEL表达式不能满足需求，你可以通过将属性partitionKeyExtractorClass设置为实现了
+    org.springframework.cloud.stream.binder.PartitionKeyExtractorStrategy接口的类来计算分区键值。
+     虽然SpEL表达通常情况下够用，但更复杂的情况下可以使用自定义实现策略。 
+     在这种情况下，属性’partitionKeyExtractorClass’可以设置如下
+     spring.cloud.stream.bindings.output.producer.partitionKeyExtractorClass=com.example.MyKeyExtractor
+     spring.cloud.stream.bindings.output.producer.partitionCount=5
+     
+     如何设置分区方法：
+     模式是 key.hash mod partitionCount-1
+     
+     自定义实现 
+     定义MyPartitionKeyExtractor，其实现PartitionKeyExtractorStrategy、PartitionSelectorStrategy接口
+     
+     
     stream-example-005 producer 支持分区设置
     stream-example-006 consumer 读取分区0的数据
     stream-example-007 consumer 读取分区1的数据
