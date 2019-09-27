@@ -811,9 +811,14 @@
     spring cloud bus  
     spring cloud bus 消息总线，是基于spring cloud stream 实现
     【大致流程】
-    客户端发送刷新事件请求（POST请求 /actuator/bus-refresh/${contextId}:*），消息总线会产生一个event事件，并将该事件发送到
+    客户端发送刷新事件请求（POST请求 /actuator/bus-refresh/${applicationContextId}:*），消息总线会产生一个event事件，并将该事件发送到
     消息中间件 kafka 或者其他mq，其他配置配置消息总线的client，都会监听mq的消息，监听的client 收到该消息后会转发为spring 内部
     事件进行下发，spring内部监听器，可以进行相应的处理
+     ${applicationContextId}:* 一般是 serviceId:port，而 serviceId 就是在 application.properties 中配置的 spring.application.name
+    消息总线提供的端点 /actuator/bus-refresh/${applicationContextId}:* 和 Actuator 自带的端点 /actuator/refresh 
+    作用是相同的，都是刷新配置项，区别主要在于：
+    /actuator/refresh：刷新本地配置项
+    /actuator/bus-refresh/${applicationContextId}:*：刷新远程应用配置项
     【主要的事件】
     RemoteApplicationEvent： spring 事件的基类，以下事件都是基于他实现，是其他事件类的基类，定义了事件对象的公共属性
     RefreshRemoteApplicationEvent： 刷新事件，刷新远端应用配置的事件，用于接收远端刷新的请求。
@@ -848,5 +853,12 @@
     post 请求：http://localhost:9090/actuator/bus-refresh
     内部其实是发送了一个 topic 为springCloudBus 到kafka
     
-    
+### bus-example-002
+    自定义   RefreshRemoteApplicationEvent 的事件监听器
+    post 请求 ： http://localhost:9092/actuator/bus-refresh/bus-example-002
+    其中bus-example-002 可以是 bus-example-002:9092 ，也可以不写，不写就会广播所有，写就是广播某一个服务
+    bus-example-002： 代表广播bus-example-002 服务
+    bus-example-002:9092 代表广播bus-example-002:9092 服务
+    不写广播所有bus的client
+     
     
