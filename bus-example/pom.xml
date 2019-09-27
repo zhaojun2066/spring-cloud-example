@@ -14,6 +14,7 @@
     <modules>
         <module>bus-example-001</module>
         <module>bus-example-002</module>
+        <module>bus-example-003</module>
     </modules>
 
     <dependencies>

@@ -860,5 +860,6 @@
     bus-example-002： 代表广播bus-example-002 服务
     bus-example-002:9092 代表广播bus-example-002:9092 服务
     不写广播所有bus的client
-     
+### bus-example-002
+    自定义远程事件 RemoteApplicationEvent   
     
