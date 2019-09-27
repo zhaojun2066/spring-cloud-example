@@ -17,6 +17,7 @@
         <module>hystrix-example</module>
         <module>zuul-example</module>
         <module>stream-example</module>
+        <module>bus-example</module>
     </modules>
 
     <parent>

@@ -807,3 +807,29 @@
 ### stream-example-012
     错误处理 
     @ServiceActivator(inputChannel = "test12.group-aa.errors")     
+##  bus-example
+    spring cloud bus  
+    spring cloud bus 消息总线，是基于spring cloud stream 实现
+    【大致流程】
+    客户端发送刷新事件请求（POST请求 /actuator/bus-refresh/${contextId}:*），消息总线会产生一个event事件，并将该事件发送到
+    消息中间件 kafka 或者其他mq，其他配置配置消息总线的client，都会监听mq的消息，监听的client 收到该消息后会转发为spring 内部
+    事件进行下发，spring内部监听器，可以进行相应的处理
+    【主要的事件】
+    RemoteApplicationEvent： spring 事件的基类，以下事件都是基于他实现，是其他事件类的基类，定义了事件对象的公共属性
+    RefreshRemoteApplicationEvent： 刷新事件，刷新远端应用配置的事件，用于接收远端刷新的请求。
+    AckRemoteApplicationEvent:确认远端应用事件，该事件表示一个特定的RemoteApplicationEvent事件被确认。
+    EnvironmentChangeRemoteApplicationEvent:环境变更的事件
+    UnknownRemoteApplicationEvent：未知事件,该事件类与之前的SentApplicationEvent、AckRemoteApplicationEvent有关，
+                                    当序列化时遇到事件的类型转换异常，则自动构造成一个未知的远端应用事件
+    SentApplicationEvent:  发送事件 和上面事件不同，他不是继承RemoteApplicationEvent 
+                           发送应用事件，表示系统中的某个地方发送了一个远端事件
+                           
+    spring 对应的内部监听
+    RefreshListener 监听    RefreshRemoteApplicationEvent
+    EnvironmentChangeListener 监听  EnvironmentChangeRemoteApplicationEvent
+    TraceListener 监听 AckRemoteApplicationEvent 和 SentApplicationEvent
+    
+    消息发送和监听请看
+    BusAutoConfiguration                    
+      
+      
