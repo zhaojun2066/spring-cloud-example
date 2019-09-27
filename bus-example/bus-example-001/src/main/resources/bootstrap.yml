@@ -1,0 +1,24 @@
+server:
+  port: 9090
+
+spring:
+  application:
+    name: bus-example-001
+  stream:
+    kafka:
+      binder:
+        brokers: 10.12.52.21:9092
+        defaultBrokerPort: 9092
+        zkNodes: 10.12.52.21:2181
+        defaultZkPort: 2181
+  cloud:
+    bus:
+      enabled: true # 默认就是true
+  kafka:
+    bootstrap-servers: 10.12.52.21:9092
+
+management:                    #SpringCloud 1.5版本暴露接口，暴露/bus-refresh接口
+  endpoints:                  #SpringCloud 2.0.0版本以后暴露接口方式
+   web:
+     exposure:
+       include: "*"           # 打开所有包括 /actuator/bus-refresh

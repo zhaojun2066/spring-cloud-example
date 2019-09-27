@@ -830,6 +830,23 @@
     TraceListener 监听 AckRemoteApplicationEvent 和 SentApplicationEvent
     
     消息发送和监听请看
-    BusAutoConfiguration                    
+    BusAutoConfiguration
+    发送和接受通道 ：SpringCloudBusClient 中定义
+    
+    bus 相关属性 参考 BusProperties 这个类   
+    
+    实现自己的事件用于bus，要继承  RemoteApplicationEvent                
       
-      
+### bus-example-001  
+    观察RefreshListener 输出，监听 RefreshRemoteApplicationEvent
+    RefreshListener源码输出：
+    @Override
+    public void onApplicationEvent(RefreshRemoteApplicationEvent event) {
+        Set<String> keys = contextRefresher.refresh();
+        log.info("Received remote refresh request. Keys refreshed " + keys);
+    }
+    post 请求：http://localhost:9090/actuator/bus-refresh
+    内部其实是发送了一个 topic 为springCloudBus 到kafka
+    
+    
+    
