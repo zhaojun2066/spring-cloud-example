@@ -877,12 +877,16 @@
     ss - Server Sent：服务端处理请求完成，开始返回结束给服务端。(sr-ss)表示服务端处理请求的时间
     cr - Client Received：客户端完成接受返回结果，此时span结束。(cr-cs)表示客户端接收服务端数据的时间
     
-    收集类型
+    sender 相关
     ZipkinSenderProperties
     Zipkin 属性
     ZipkinProperties
     Kafka 相关
     ZipkinKafkaSenderConfiguration
+    
+    
+    collector 属性
+    ZipkinKafkaCollectorProperties
     
     zipkin: https://github.com/openzipkin/zipkin
         sleuth-example-001和sleuth-example-002

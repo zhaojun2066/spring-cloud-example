@@ -17,6 +17,8 @@ zipkin:
   collector:
     kafka:
       topic: zipkin
+      groupId: zipkin-group
+      streams: 3 # consumer thread number
       bootstrap-servers: 10.12.52.21:9092
 eureka:
   client:
