@@ -870,7 +870,20 @@
         sleuth-example-001和sleuth-example-002
        如果是内存存储采集数据，请注释掉kafka 相关的配置
        如果是mysql 存储采集数据，请注释掉kafka 相关的配置
-       如果是kafka ，请不要注释kafka相关的配置     
+       如果是kafka ，请不要注释kafka相关的配置  
+       
+       相关sleuth和zipkin 收集端配置
+       spring:
+         zipkin:
+           #base-url: http://localhost:5000
+           #base-url: http://localhost:4999   # 下面是发送到kafka 所以base-url不需要
+           sender:
+             type: kafka  # 采集数据异步发送到kafka，不采用kafka 将其注释掉就可以了
+         kafka:
+            bootstrap-servers: 10.12.52.21:9092  # 用于发送到kafka
+         sleuth:
+           sampler:
+             probability: 1 #设置采样率，为了测试设置100%采集，设置为1.0   
 ### zipkin-server
     展示数据，将数据放入内存
      http://localhost:5000
