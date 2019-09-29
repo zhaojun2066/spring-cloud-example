@@ -866,16 +866,24 @@
   
 ##  sleuth-example
     链路跟踪
-   
+        sleuth-example-001和sleuth-example-002
+       如果是内存存储采集数据，请注释掉kafka 相关的配置
+       如果是mysql 存储采集数据，请注释掉kafka 相关的配置
+       如果是kafka ，请不要注释kafka相关的配置     
 ### zipkin-server
     展示数据，将数据放入内存
      http://localhost:5000
-### zipkin-server
+### zipkin-server-mysql
     展示数据，将数据放入mysql 
-     http://localhost:4999   
+     http://localhost:4999
+### zipkin-server-msyql-kafka
+    展示数据，异步将数据放入mysql 
+     http://localhost:4998         
 ### sleuth-example-001
-    服务提供    
+    服务提供   
+     
 ### sleuth-example-002
     调用服务 sleuth-example-001
     http://localhost:5002/getUsername/jufeng
-    然后观察  zipkin ui 展示的数据         
+    然后观察  zipkin ui 展示的数据   
+    
