@@ -863,3 +863,19 @@
 ### bus-example-003 
     自定义远程事件 RemoteApplicationEvent   
     
+  
+##  sleuth-example
+    链路跟踪
+   
+### zipkin-server
+    展示数据，将数据放入内存
+     http://localhost:5000
+### zipkin-server
+    展示数据，将数据放入mysql 
+     http://localhost:4999   
+### sleuth-example-001
+    服务提供    
+### sleuth-example-002
+    调用服务 sleuth-example-001
+    http://localhost:5002/getUsername/jufeng
+    然后观察  zipkin ui 展示的数据         

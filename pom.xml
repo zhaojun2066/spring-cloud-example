@@ -18,6 +18,7 @@
         <module>zuul-example</module>
         <module>stream-example</module>
         <module>bus-example</module>
+        <module>sleuth-example</module>
     </modules>
 
     <parent>

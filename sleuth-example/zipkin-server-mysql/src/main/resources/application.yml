@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: zipkin-server-mysql
+  sleuth:
+    enabled: false #表示当前程序不使用sleuth
+  datasource:
+    username: root
+    password: root
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/sleuth?characterEncoding=utf-8&useSSL=false
+    initialize: true
+zipkin:
+  storage:
+    type: mysql
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 4999
+management:
+  metrics:
+    web:
+      server:
+        auto-time-requests: false
