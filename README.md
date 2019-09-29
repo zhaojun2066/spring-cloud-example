@@ -866,6 +866,7 @@
   
 ##  sleuth-example
     链路跟踪
+    zipkin: https://github.com/openzipkin/zipkin
         sleuth-example-001和sleuth-example-002
        如果是内存存储采集数据，请注释掉kafka 相关的配置
        如果是mysql 存储采集数据，请注释掉kafka 相关的配置
