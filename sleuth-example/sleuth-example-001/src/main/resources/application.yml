@@ -6,6 +6,8 @@ spring:
     #base-url: http://localhost:4999   # 下面是发送到kafka 所以base-url不需要
     sender:
       type: kafka  # 采集数据异步发送到kafka，不采用kafka 将其注释掉就可以了
+    kafka:
+      topic: zipkin  # 发送的kafka  topic
   kafka:
      bootstrap-servers: 10.12.52.21:9092
   sleuth:
