@@ -866,6 +866,17 @@
   
 ##  sleuth-example
     链路跟踪
+    一些概念：
+    
+    1.Span，Span是基本的工作单元。Span包括一个64位的唯一ID，一个64位trace码，描述信息，时间戳事件，key-value 注解(tags)，span处理者的ID（通常为IP）。
+    最开始的初始Span称为根span，此span中span id和 trace id值相同。
+    2.Trance，包含一系列的span，它们组成了一个树型结构
+    3.Annotation，用于及时记录存在的事件。常用的Annotation如下：
+    cs - Client Sent：客户端发送一个请求，表示span的开始
+    sr - Server Received：服务端接收请求并开始处理它。(sr-cs)等于网络的延迟
+    ss - Server Sent：服务端处理请求完成，开始返回结束给服务端。(sr-ss)表示服务端处理请求的时间
+    cr - Client Received：客户端完成接受返回结果，此时span结束。(cr-cs)表示客户端接收服务端数据的时间
+    
     zipkin: https://github.com/openzipkin/zipkin
         sleuth-example-001和sleuth-example-002
        如果是内存存储采集数据，请注释掉kafka 相关的配置
