@@ -887,25 +887,42 @@
     
     collector 属性
     ZipkinKafkaCollectorProperties
-    
-    zipkin: https://github.com/openzipkin/zipkin
-        sleuth-example-001和sleuth-example-002
-       如果是内存存储采集数据，请注释掉kafka 相关的配置
-       如果是mysql 存储采集数据，请注释掉kafka 相关的配置
-       如果是kafka ，请不要注释kafka相关的配置  
+        
+    sleuth-example-001和sleuth-example-002
+    如果是内存存储采集数据，请注释掉kafka 相关的配置
+    如果是mysql 存储采集数据，请注释掉kafka 相关的配置
+    如果是kafka ，请不要注释kafka相关的配置  
        
-       相关sleuth和zipkin 收集端配置
-       spring:
-         zipkin:
-           #base-url: http://localhost:5000
-           #base-url: http://localhost:4999   # 下面是发送到kafka 所以base-url不需要
-           sender:
-             type: kafka  # 采集数据异步发送到kafka，不采用kafka 将其注释掉就可以了
-         kafka:
-            bootstrap-servers: 10.12.52.21:9092  # 用于发送到kafka
-         sleuth:
-           sampler:
-             probability: 1 #设置采样率，为了测试设置100%采集，设置为1.0   
+    相关sleuth和zipkin 收集端配置
+    spring:
+     zipkin:
+       #base-url: http://localhost:5000
+       #base-url: http://localhost:4999   # 下面是发送到kafka 所以base-url不需要
+       sender:
+         type: kafka  # 采集数据异步发送到kafka，不采用kafka 将其注释掉就可以了
+     kafka:
+        bootstrap-servers: 10.12.52.21:9092  # 用于发送到kafka
+     sleuth:
+       sampler:
+         probability: 1 #设置采样率，为了测试设置100%采集，设置为1.0   
+       
+       
+     【zipkin】
+     zipkin: https://github.com/openzipkin/zipkin
+     提供给zipkin ui 数据的接口
+     https://zipkin.io/zipkin-api/#/default
+     
+             
+     【brave】 介绍
+     https://opentracing-contrib.github.io/opentracing-specification-zh/specification.html
+     http://localhost:5002/user/jufeng 
+     
+     源码
+     https://github.com/openzipkin/brave
+     官网demo
+     https://github.com/openzipkin/brave-webmvc-example   
+     
+         
 ### zipkin-server
     展示数据，将数据放入内存
      http://localhost:5000
@@ -920,7 +937,8 @@
      
 ### sleuth-example-002
     调用服务 sleuth-example-001
-    调用本地方法监控 Tracer
-    http://localhost:5002/getUsername/jufeng
+    调用本地方法监控 Tracer  
+    https://blog.csdn.net/apei830/article/details/78722180
+    
     然后观察  zipkin ui 展示的数据   
     
