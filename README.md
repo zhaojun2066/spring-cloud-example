@@ -920,6 +920,7 @@
      
 ### sleuth-example-002
     调用服务 sleuth-example-001
+    调用本地方法监控 Tracer
     http://localhost:5002/getUsername/jufeng
     然后观察  zipkin ui 展示的数据   
     
