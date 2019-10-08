@@ -27,4 +27,13 @@ public class UserController {
         this.otherService.getUser("JuFeng");
         return otherService.getAge();
     }
+
+    @GetMapping("/other/getOther")
+    public Integer getOther(){
+       return 100;
+    }
+
+
+
+
 }
