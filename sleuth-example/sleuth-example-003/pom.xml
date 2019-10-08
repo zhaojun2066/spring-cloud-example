@@ -3,29 +3,27 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>spring-cloud-example</artifactId>
+        <artifactId>sleuth-example</artifactId>
         <groupId>com.jufeng.cloud</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>sleuth-example</artifactId>
-    <packaging>pom</packaging>
-    <modules>
-        <module>zipkin-server</module>
-        <module>sleuth-example-001</module>
-        <module>sleuth-example-002</module>
-        <module>zipkin-server-mysql</module>
-        <module>zipkin-server-msyql-kafka</module>
-        <module>sleuth-example-003</module>
-    </modules>
+    <artifactId>sleuth-example-003</artifactId>
 
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-sleuth</artifactId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
     </dependencies>
-
 </project>

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: sleuth-example-003
+  zipkin:
+    #baseUrl: http://zipkinserver/   zipkinserver 为服务名称，通过服务发现
+    base-url: http://localhost:4999
+  sleuth:
+    sampler:
+      probability: 1 #设置采样率，为了测试设置100%采集，设置为1.0
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+server:
+  port: 5003

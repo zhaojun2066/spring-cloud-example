@@ -911,7 +911,10 @@
      zipkin: https://github.com/openzipkin/zipkin
      提供给zipkin ui 数据的接口
      https://zipkin.io/zipkin-api/#/default
+     支持的框架
+     https://github.com/openzipkin/brave/tree/master/instrumentation
      
+     Sampler.ALWAYS_SAMPLE  ==  spring.sleuth.sampler.percentage=1  （实现为ProbabilityBasedSampler.java）
              
      【brave】 介绍
      https://opentracing-contrib.github.io/opentracing-specification-zh/specification.html
@@ -941,4 +944,5 @@
     https://blog.csdn.net/apei830/article/details/78722180
     
     然后观察  zipkin ui 展示的数据   
-    
+### sleuth-example-003
+    自定义simpler 抽样  

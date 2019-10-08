@@ -1,11 +1,11 @@
 spring:
   application:
     name: sleuth-example-001
-  zipkin:
+  zipkin: # 将zipkin 所有都注释掉，默认是localhost:9441
     #base-url: http://localhost:5000
     #base-url: http://localhost:4999   # 下面是发送到kafka 所以base-url不需要
     sender:
-      type: kafka  # 采集数据异步发送到kafka，不采用kafka 将其注释掉就可以了
+      type: kafka  # 采集数据异步发送到kafka，不采用kafka 将其注释掉就可以了，支持三种 方式  RABBIT, KAFKA, WEB
     kafka:
       topic: zipkin  # 发送的kafka  topic
   kafka:
