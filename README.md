@@ -946,3 +946,14 @@
     然后观察  zipkin ui 展示的数据   
 ### sleuth-example-003
     自定义simpler 抽样  
+    
+### sleuth-example-004    
+    基于注解的local spans
+    参考
+    https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_creating_new_spans
+    
+    启动eureka-example/example-001  ，zipkin-server-mysql，sleuth-example-004
+    
+    访问：
+    http://localhost:5004/user/getAge
+    http://localhost:4999/zipkin/
