@@ -3,6 +3,9 @@ spring:
     name: sleuth-example-004
   zipkin:
     base-url: http://localhost:4999
+    locator:
+      discovery:
+        enabled: true
   sleuth:
     sampler:
       probability: 1 #设置采样率，为了测试设置100%采集，设置为1.0
