@@ -949,9 +949,10 @@
     
 ### sleuth-example-004    
     基于注解的local spans，
-    HttpSampler 实现抽样采集,ConfigServerSampler
+    HttpSampler 实现http请求抽样采集,ConfigServerSampler
     SkipPatternProvider  默认实现了静态资源之类的过滤，自己可以重新SkipPatternProvider 才生产自己的pattern
-    自定义 拦截http请求 的 TracingFilter:  MyFilter
+    自定义 过滤http请求 的 TracingFilter:  MyFilter
+    修改span name：自定义span name ，可以给每个span name 起作用
     
     参考
     https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_creating_new_spans
