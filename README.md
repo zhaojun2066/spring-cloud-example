@@ -996,8 +996,12 @@
 ### sleuth-example-005
     异步servlet支持，本身就是支持的
     
-    @Async注解方法 会建立新的span
-    @Scheduled注解方法 会建立新的span
+    @Async注解方法 会建立新的span  关闭 spring.sleuth.async.enabled= false
+    @Scheduled注解方法 会建立新的span 关闭 spring.sleuth.scheduled.enabled = false
+    
+    自定义线程池 CustomExecutorConfig  没有起作用
+    用于创建span
+    create spans each time a new task is submitted, invoked, or scheduled
     
     
         
