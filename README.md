@@ -1005,3 +1005,10 @@
     
     
         
+
+##  zookeeper-example
+
+### zookeeper-example-001
+    服务注册和发现，注册服务到zookeeper，并使用ip       
+    spring cloud zookeeper 作为服务注册发现的配置项目 详见下面类：
+    ZookeeperDiscoveryProperties

@@ -19,6 +19,7 @@
         <module>stream-example</module>
         <module>bus-example</module>
         <module>sleuth-example</module>
+        <module>zookeeper-example</module>
     </modules>
 
     <parent>
