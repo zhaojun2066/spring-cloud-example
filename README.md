@@ -970,13 +970,14 @@
     }
     7 线程内跟踪
     8 配置不进行跟踪的uri
+      和上面ConfigServerSampler没有关系，是可以单独配置，或者一起配合使用的
       spring.sleuth.web.skipPattern，这个会覆盖SleuthWebProperties 中的DEFAULT_SKIP_PATTERN
       也可以通过 spring.sleuth.web.additionalSkipPattern 进行追加
       demo 见配置文件  
+      访问http://localhost:5004/other/getOther  ，此时 是没有追踪other 开头的uri的
   
     
     启动eureka-example/example-001  ，zipkin-server-mysql，sleuth-example-004
-    
     访问：
     http://localhost:5004/user/getAge
     http://localhost:4999/zipkin/
