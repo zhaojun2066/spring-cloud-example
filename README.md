@@ -1007,8 +1007,12 @@
         
 
 ##  zookeeper-example
-
+    Spring Cloud Netflix supplies useful tools that work regardless of which DiscoveryClient implementation you use. 
+    Feign, Turbine, Ribbon, and Zuul all work with Spring Cloud Zookeeper.
 ### zookeeper-example-001
+    提供服务
     服务注册和发现，注册服务到zookeeper，并使用ip       
     spring cloud zookeeper 作为服务注册发现的配置项目 详见下面类：
     ZookeeperDiscoveryProperties
+### zookeeper-example-003    
+    DiscoveryClient
