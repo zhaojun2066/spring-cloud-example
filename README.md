@@ -926,6 +926,17 @@
      https://github.com/openzipkin/brave-webmvc-example   
      
          
+     dubbo:
+     https://cloud.spring.io/spring-cloud-static/Finchley.SR4/single/spring-cloud.html#_dubbo_rpc_support
+     
+     <dependency>
+         <groupId>io.zipkin.brave</groupId>
+         <artifactId>brave-instrumentation-dubbo-rpc</artifactId>
+     </dependency>
+     dubbo.properties
+     dubbo.provider.filter=tracing
+     dubbo.consumer.filter=tracing
+            
 ### zipkin-server
     展示数据，将数据放入内存
      http://localhost:5000
@@ -984,5 +995,9 @@
 
 ### sleuth-example-005
     异步servlet支持，本身就是支持的
+    
+    @Async注解方法 会建立新的span
+    @Scheduled注解方法 会建立新的span
+    
     
         

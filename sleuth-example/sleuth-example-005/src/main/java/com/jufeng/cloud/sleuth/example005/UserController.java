@@ -21,6 +21,7 @@ public class UserController {
 
     @GetMapping("/user/getUser")
     public Callable<User> getAge(){
+        this.userService.getAge();
         return (Callable) () -> userService.getUser();
     }
 

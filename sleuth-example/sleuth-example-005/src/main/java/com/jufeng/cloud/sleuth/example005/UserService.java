@@ -9,6 +9,8 @@ import org.springframework.cloud.sleuth.annotation.ContinueSpan;
 import org.springframework.cloud.sleuth.annotation.NewSpan;
 import org.springframework.cloud.sleuth.annotation.SpanTag;
 import org.springframework.cloud.sleuth.instrument.async.TraceRunnable;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 /**
@@ -36,14 +38,12 @@ public class UserService {
     }
 
 
-    @NewSpan("getAge")
-    @ContinueSpan(log = "hello")
+    @Async
     public int getAge(){
         return 10;
     }
 
-    @NewSpan("getName")
-    @ContinueSpan(log = "k-name")
+    @Scheduled
     public String getName(@SpanTag(key = "name",expression = "'hello' + ' word'" ) String name){
         return "jufeng";
     }
