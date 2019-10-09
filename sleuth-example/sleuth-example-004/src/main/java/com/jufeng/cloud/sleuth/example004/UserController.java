@@ -25,6 +25,7 @@ public class UserController {
     public Integer getAge(){
         this.otherService.getName("jufeng");
         this.otherService.getUser("JuFeng");
+        this.otherService.sport("run...");
         return otherService.getAge();
     }
 
