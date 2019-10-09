@@ -19,7 +19,7 @@ import org.springframework.stereotype.Component;
  **/
 
 @Component
-public class OtherService {
+public class UserService {
 
     @Autowired
     private Tracing tracing;

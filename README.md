@@ -969,7 +969,10 @@
     	}
     }
     7 线程内跟踪
-    
+    8 配置不进行跟踪的uri
+      spring.sleuth.web.skipPattern，这个会覆盖SleuthWebProperties 中的DEFAULT_SKIP_PATTERN
+      也可以通过 spring.sleuth.web.additionalSkipPattern 进行追加
+      demo 见配置文件  
   
     
     启动eureka-example/example-001  ，zipkin-server-mysql，sleuth-example-004

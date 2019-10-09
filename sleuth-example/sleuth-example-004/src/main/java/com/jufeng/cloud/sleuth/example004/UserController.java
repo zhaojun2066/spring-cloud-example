@@ -1,11 +1,7 @@
 package com.jufeng.cloud.sleuth.example004;
 
-import brave.Span;
-import brave.SpanCustomizer;
-import brave.Tracer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -19,14 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserController {
 
     @Autowired
-    private OtherService otherService;
+    private UserService userService;
 
     @GetMapping("/user/getAge")
     public Integer getAge(){
-        this.otherService.getName("jufeng");
-        this.otherService.getUser("JuFeng");
-        this.otherService.sport("run...");
-        return otherService.getAge();
+        this.userService.getName("jufeng");
+        this.userService.getUser("JuFeng");
+        this.userService.sport("run...");
+        return userService.getAge();
     }
 
     @GetMapping("/other/getOther")
