@@ -19,6 +19,7 @@
         <module>zipkin-server-msyql-kafka</module>
         <module>sleuth-example-003</module>
         <module>sleuth-example-004</module>
+        <module>sleuth-example-005</module>
     </modules>
 
 

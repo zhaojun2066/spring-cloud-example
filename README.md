@@ -981,3 +981,8 @@
     访问：
     http://localhost:5004/user/getAge
     http://localhost:4999/zipkin/
+
+### sleuth-example-005
+    异步servlet支持，本身就是支持的
+    
+        
