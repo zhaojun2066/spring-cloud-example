@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: zookeeper-example-004
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      dependencies:
+        zookeeper-example-001:
+          #path: /services
+          loadBalancerType: ROUND_ROBIN
+          #contentTypeTemplate: application/vnd.zookeeper-example-001.$version+json
+          #version: v1
+          headers:
+            header1:
+              - value1
+            header2:
+              - value2
+          required: false
+          stubs: org.springframework:foo:stub
+server:
+  port: 6004
+

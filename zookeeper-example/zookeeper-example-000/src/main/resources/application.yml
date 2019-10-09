@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: zookeeper-example-001
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+      discovery:
+        root: /services  # 注册到zk 的根路径，默认是  /services
+        preferIpAddress: true  # 注册使用ip
+server:
+  port: 6000

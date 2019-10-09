@@ -6,3 +6,6 @@ spring:
       connect-string: localhost:2181
 server:
   port: 6003
+zookeeper-example-001:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule

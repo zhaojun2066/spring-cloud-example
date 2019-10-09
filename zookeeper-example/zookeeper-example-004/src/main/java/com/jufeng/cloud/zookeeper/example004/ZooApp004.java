@@ -1,17 +1,16 @@
-package com.jufeng.cloud.zookeeper.example003;
+package com.jufeng.cloud.zookeeper.example004;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 /**
  * @program: spring-cloud-example
@@ -22,26 +21,29 @@ import java.util.List;
 @EnableFeignClients
 @EnableDiscoveryClient
 @SpringBootApplication
-public class ZooApp003 implements CommandLineRunner {
+@RestController
+public class ZooApp004 implements CommandLineRunner {
 
     @Autowired
     private HelloService helloService;
 
-
-
+    @RequestMapping("/")
+    public String home() {
+        return helloService.home();
+    }
 
 
     public static void main(String[] args) {
-        new SpringApplication().run(ZooApp003.class,args);
+        new SpringApplication().run(ZooApp004.class,args);
     }
 
     @Override
     public void run(String... args) throws Exception {
+      /*  System.out.println(helloService.home());
         System.out.println(helloService.home());
         System.out.println(helloService.home());
         System.out.println(helloService.home());
         System.out.println(helloService.home());
-        System.out.println(helloService.home());
-        System.out.println(helloService.home());
+        System.out.println(helloService.home());*/
     }
 }

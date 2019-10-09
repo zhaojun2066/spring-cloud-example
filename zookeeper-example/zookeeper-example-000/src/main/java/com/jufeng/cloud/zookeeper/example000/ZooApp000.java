@@ -1,4 +1,4 @@
-package com.jufeng.cloud.zookeeper.example001;
+package com.jufeng.cloud.zookeeper.example000;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -14,14 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 @SpringBootApplication
 @RestController
-public class ZooApp001 {
+public class ZooApp000 {
 
     @RequestMapping("/")
     public String home() {
-        return "Hello world 001";
+        return "Hello world 000";
     }
 
     public static void main(String[] args) {
-        new SpringApplicationBuilder(ZooApp001.class).web(true).run(args);
+        new SpringApplicationBuilder(ZooApp000.class).web(true).run(args);
     }
 }

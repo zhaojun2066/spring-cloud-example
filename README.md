@@ -1020,5 +1020,8 @@
     然后启动 zookeeper-example-002   看控制台输出
 ### zookeeper-example-003
     Feign demo   
+    首先要启动 zookeeper-example-000
     首先要启动 zookeeper-example-001
     然后启动 zookeeper-example-003   看控制台输出 
+### zookeeper-example-004
+     Using the Zookeeper Dependencies 未能演示成功    
