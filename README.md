@@ -1014,5 +1014,11 @@
     服务注册和发现，注册服务到zookeeper，并使用ip       
     spring cloud zookeeper 作为服务注册发现的配置项目 详见下面类：
     ZookeeperDiscoveryProperties
-### zookeeper-example-003    
+### zookeeper-example-002    
     DiscoveryClient
+    首先要启动 zookeeper-example-001
+    然后启动 zookeeper-example-002   看控制台输出
+### zookeeper-example-003
+    Feign demo   
+    首先要启动 zookeeper-example-001
+    然后启动 zookeeper-example-003   看控制台输出 

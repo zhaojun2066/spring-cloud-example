@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: zookeeper-example-003
+  cloud:
+    zookeeper:
+      connect-string: localhost:2181
+server:
+  port: 6003
